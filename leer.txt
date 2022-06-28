@@ -1,0 +1,16 @@
+
+Hola Joaco!!!
+
+Mi proyecto va a ser una calculadora nutricional donde se podrá calcular, por ejemplo, el Requerimiento
+Calórico Total (RCT), Déficit Calórico, Superávit Calórico, Indice de Masa Corporal (IMC), entre otras cosas. Estas son
+fórmulas que se van realizando de acuerdo a datos (como la edad, el peso, la altura) que el usuario ingrese.
+
+La primera parte del programa, saca el Déficit o Superávit Calórico, ingresando los datos requeridos. 
+Lo que no encontré es una fórmula para poder usarla con un for o while para hacer el desafío. Y tampoco se me ocurrió nada en toda la semana
+para poder relacionarlas con la idea de mi proyecto, por lo que lo hice pero no le pude dar una "historia" o relacionarlo con 
+algo de la vida cotidiana, más que una tabla de multiplicar o que cumpla lo básico que hace. Seguramente con el tiempo
+me familiarice más y pueda comprender con qué usarlo, porque entiendo la teoría, pero en la práctica me cuesta una
+banda (por lo menos el for;( jej ).
+
+Saludos :D
+
