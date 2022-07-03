@@ -1,18 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css"> -->
-
-    <title>Roma</title>
+    <script src="https://kit.fontawesome.com/ff338c4dd2.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Fitness Coaching - FitRoma</title>
+    <script defer src="js/main.js"></script>
 </head>
-<body>
-    
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    --><script src="js/main.js"></script>
+
+<body class="container-fluid">
+    <header class="row">
+        <div class="header__container col-lg-11 col-md-11 col-sm-11 col-xs-11">
+            <p class="logo">FitRoma</p>
+        </div>
+        <i class="fa-solid fa-cart-shopping col-lg-1 col-md-1 col-sm-1 col-xs-1"></i>
+    </header>
+    <section class="row">
+        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            <h2>A strong mind leads to <br> a strong body</h2>
+        </article>
+        <aside class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <h1>girl, you got this</h1>
+            <p>¿How can I help you?</p>
+            <ul>
+                <li><a href="#calculator">Calorie Calculator</a></li>
+                <li><a href="#programs">Nutrition & Workout Programs</a></li>
+                <li><a href="#shop">Shop</a></li>
+            </ul>
+        </aside>
+    </section>
+    <section class="row">
+        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Let's get strong together</p>
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness Coaching</h2>
+        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness is one of my biggest passions and something that I am the most proud of since I have dedicated so
+            much time to learning and growing my knowledge in.</p>
+    </section>
+    <section id="calculator" class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div></div>
+
+            <!-- edad -->
+            <form class="form-floating">
+                <input type="text" class="form-control" >
+                <label for="floatingInputValue">Age (years)</label>
+            </form>
+
+            <!-- altura -->
+            <form class="form-floating">
+                <input type="text" class="form-control" >
+                <label for="floatingInputValue">Height (cm)</label>
+            </form>
+
+            <!-- peso -->
+            <form class="form-floating">
+                <input type="text" class="form-control">
+                <label for="floatingInputValue">Weight (kg)</label>
+            </form>
+
+            <!-- select género -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Female
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Male
+                </label>
+            </div>
+
+            <!-- select actividad física -->
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Activity</option>
+                <option value="1">Little to no exercise</option>
+                <option value="2">Light exercise (1-3 days per week)</option>
+                <option value="3">Moderate exercise (3-5 days per week)</option>
+                <option value="4">Heavy exercise (6-7 days per week)</option>
+                <option value="5">Very heavy exercise (twice per day)</option>
+            </select>
+
+            <!-- radios opciones bulk/cut/mantenimiento -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Calorie Deficit/CUT
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Calorie Surplus/BULK
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Maintenance Calories/Body Recomposition
+                </label>
+            </div>
+            <button type="submit">=</button>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h3>Calorie Calculator</h3>
+            <p>Q&A</p>
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            What is a calorie deficit?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">A calorie deficit is when you consume fewer calories than you burn.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            What is a calorie surplus?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">A caloric surplus is when the number of calories that we consume is higher than the number of calories we burn. In a caloric surplus, our body mass increases.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            What is body recomposition?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Body recomposition is the goal of increasing lean muscle mass and decreasing body fat mass, which typically happens while eating at maintenance calories.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="programs" class="row">
+        <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Nutrition & Workout Programs</h3>
+
+        <!-- card 1 -->
+        <div class="card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 3 -->
+        <div class="card card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 4 -->
+        <div class="card card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="row">
+        <h3 class="card col-lg-12 col-md-12 col-sm-12 col-xs-12">The FitRoma Shop</h3>
+
+        <!-- card 1 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 3 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 4 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 5 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 6 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 7 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <!-- card 8 -->
+        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+        <aside class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <h4>Hey, <br> I am Roma</h4>
+            <p>I wanted to start online coaching to inspire and motivate other people who were or are in my exact shoes
+                5 years ago. I hope to change their mindset, lifestyle, or any goals they want to achieve in the gym.
+            </p>
+            <p>I'll always be their biggest cheerleader and motivator even when they feel like giving up.</p>
+        </aside>
+    </section>
+
+    <section class="row">
+        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Contact with me</h4>
+
+        <!-- nombre -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div>
+                <input type="text" class="form-control" placeholder="Name" aria-label="First name">
+            </div>
+        </div>
+
+        <!-- email -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div>
+                <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+            </div>
+        </div>
+
+        <!-- mensaje -->
+        <div class="form-floating col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Comments</label>
+        </div>
+
+        <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">SEND</button>
+    </section>
+
+    <footer class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <a href="https://www.instagram.com/" target="_BLANK"><i class="fa-brands fa-instagram icono__footer"></i></a>
+            <a href="https://youtube.com/" target="_BLANK"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/" target="_BLANK"><i class="fa-brands fa-tiktok redes"></i></a>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <p>Política de Privacidad | Términos de Uso </p>
+            <p>Copyright &copy; FitRoma 2022</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>
