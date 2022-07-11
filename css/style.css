@@ -1,5 +1,43 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+body{
+    font-family: 'DM Serif Display', serif;
+    background-color: #f5f5f5;
+    color: rgb(53, 53, 53);
+}
+ul{
+    list-style: none;
+}
+
+.logo{
+    font-family: 'Changa One', cursive;
+    font-size: 40px;
+    font-weight:bold;
+    color: #00e676;
+    padding: 15px;
+}
+
+.logo span{
+    color: #ff28d0;
+    color: rgb(75, 75, 75);
+}
+
+h1{
+    font-size: 100px;
+    font-weight: 500;
+    color: #ce93d8;
+    line-height: 1;
+    padding: 0 25px;
+}
+h2{
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 80px;
+    font-weight: 500;
+    color: #ce93d8;
+    line-height: 1;
+    padding: 20px;
+}
