@@ -17,7 +17,7 @@ ul{
     font-family: 'Changa One', cursive;
     font-size: 40px;
     font-weight:bold;
-    color: #00e676;
+    color: #737373;
     padding: 15px;
 }
 
@@ -26,18 +26,102 @@ ul{
     color: rgb(75, 75, 75);
 }
 
+.carrito{
+    padding: 30px 40px 40px 40px;
+    font-size: 40px;
+}
+
+.seccion-1{
+    margin-bottom: 60px;
+}
+
+.seccion-1 .frase-1 h2{
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 100px;
+    font-weight: 500;
+    color: #373737;
+    line-height: 1;
+    padding: 20px;
+}
+
+.seccion-1 .nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccion-1 .nav p{
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.girl{
+    padding: 15px;
+    width: 230px;
+    height: 150px;
+    background-color: rgb(255, 166, 32);
+    color:rgb(86, 96, 229);
+    font-family: 'DM Serif Display', serif;
+    font-size: 120px;
+    transform: rotate(350deg);
+}
+
 h1{
     font-size: 100px;
     font-weight: 500;
     color: #ce93d8;
+    color: #373737;
     line-height: 1;
     padding: 0 25px;
+    width: 386px;
+    text-align: center;
 }
-h2{
-    font-family: 'Black Han Sans', sans-serif;
-    font-size: 80px;
-    font-weight: 500;
-    color: #ce93d8;
+
+.seccion-2{
+    padding-bottom: 100px;
+}
+.seccion-2 .frase-2{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 70px;
+    font-weight: bolder;
+    color: #70707030;
     line-height: 1;
-    padding: 20px;
+    padding: 70px 50px 0px 50px;
+    display: flex;
+    justify-content: end;
+}
+
+.seccion-2 h2{
+    font-size: 100px;
+    padding-left: 50px;
+}
+
+.seccion-2 p{
+    font-size: 30px;
+    margin: 0px 0px;
+}
+
+#programs{
+    margin: 100px 0px;
+}
+#shop{
+    background-color: #f5f5f5;
+    margin: 100px 0px;
+}
+.roma{
+    margin: 100px 0px;
+}
+.roma aside div{
+    padding: 10px;
+    width: 226px;
+    height: 169px;
+    background-color: rgb(159, 3, 110);
+    color: rgb(249, 119, 197);
+    font-family: 'DM Serif Display', serif;
+    font-size: 105px;
+    transform: rotate(7deg);
+}
+.contact{
+    margin: 100px 0px;
 }

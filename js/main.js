@@ -60,6 +60,7 @@ do{
             break;
         default:
             alert("Necesito saber con cuánta frecuencia hace ejercicio, por favor");
+            break
     }
 } while(actividadFisica > 5)
 console.log(`Calorías de mantenimiento = ${calorias}`);
@@ -109,7 +110,7 @@ class PlanAlimenticio{
         this.precioPlan = precioPlan;
     }
     mostrarContenidoPlan(){
-        console.log(`Plan Alimenticio enfocado en ${this.objetivoPlan}. Precio: ${this.precioPlan}`)
+        alert(`Plan Alimenticio enfocado en ${this.objetivoPlan}. Precio: ${this.precioPlan}`)
     }
 }
 
@@ -120,7 +121,7 @@ const planMantenimiento = new PlanAlimenticio (objetivoPlan, totalCalorias, 800)
 
 const personalizarPlan = () =>{
 
-    alert('¡Vamos a adaptar tu plan nutricional a tu estilo de vida! Responda las siguientes preguntas, por favor.')
+    alert('¡Vamos a adaptar tu plan nutricional a tu estilo de vida! Respondé las siguientes preguntas, por favor.')
     let proteinas = [
         {alimento: 'lomo embuchado', proteina : 'animal', sinTacc: true},
         {alimento: 'soja', proteina: 'vegetal', sinTacc: true},
@@ -208,39 +209,77 @@ const personalizarPlan = () =>{
     let contenidoFrutasAlergicos = frutas.filter ((item) => item !== alergico);
     let contenidoGranosAlergicos = granos.filter ((item) => item !== alergico);
 
-    console.log(contenidoProteinaAlergicos)
-    console.log(contenidoLactosAlergicos)
-    console.log(contenidoVerdurasAlergicos)
-    console.log(contenidoFrutasAlergicos)
-    console.log(contenidoGranosAlergicos)
+    console.log(contenidoProteinaAlergicos);
+    console.log(contenidoLactosAlergicos + contenidoVerdurasAlergicos + contenidoFrutasAlergicos + contenidoGranosAlergicos)
     alert(`¡Listo ${nombre}! Te enviaremos tu Plan Alimenticio por email. `)
 }
 
-// Realizar compra
-let carrito = [];
+//Planes de Entrenamiento -----------------------------------------------------
 
-if (objetivoPlan == 'Pérdida de grasa corporal'){
-    planDeficit.mostrarContenidoPlan();
-    comprarDeficit = parseInt(prompt('Comprar\nPlan Alimenticio: Pérdida de grasa corporal\n(1) Si\n(2) No'));
-    if (comprarDeficit == 1){
-        carrito.push({producto: 'Plan Alimenticio Déficit Calórico', precio: '$2500'});
-        console.log(carrito)
-        personalizarPlan()
+class PlanEntrenamiento{
+    constructor (nivelPlan, precio){
+        this.nivelPlan = nivelPlan;
+        this.precio = precio;
     }
-} else if (objetivoPlan == 'Aumento de masa muscular'){
-    planSuperavit.mostrarContenidoPlan();
-    comprarSuperavit = parseInt(prompt('Comprar\nPlan Alimenticio: Aumento de Masa Muscular\n(1) Si\n(2) No'));
-    if (comprarSuperavit == 1){
-        carrito.push({producto:'Plan Alimenticio Superávit Calórico', precio: '$9500'});
-        console.log(carrito)
-        personalizarPlan()
+    mostrarContenidoPlanEntrenamiento(){
+        alert(`Plan Entrenamiento Nivel ${this.nivelPlan}. Precio: ${this.precio}`)
     }
-} else{
-    planMantenimiento.mostrarContenidoPlan()
-    comprarMantenimiento = parseInt(prompt('Comprar\nPlan Alimenticio: Recomposición corporal\n(1) Si\n(2) No'));
-    if (comprarMantenimiento == 1){
-        carrito.push({producto:'Plan Alimenticio Recomposición Corporal', precio:'$800'});
+}
+const planPrincipiante = new PlanEntrenamiento('Principiante', 3000);
+const planIntermedio = new PlanEntrenamiento('Intermedio', 4000);
+const planAvanzado = new PlanEntrenamiento('Avanzado', 5000);
+
+// Realizar compra ----------------------------------------------------
+
+let carrito = [];
+let comprar = "";
+let comprarPlanAlimenticio;
+let comprarPlanEntrenamiento;
+let comprarCombo;
+
+function elegirPlanAlimenticio() {
+    if (objetivoPlan == 'Pérdida de grasa corporal'){
+        planDeficit.mostrarContenidoPlan();
+        carrito.push(planDeficit)
+    } else if (objetivoPlan == 'Aumento de masa muscular'){
+        planSuperavit.mostrarContenidoPlan();
+        carrito.push(planSuperavit)
+    } else{
+        planMantenimiento.mostrarContenidoPlan()
+        carrito.push(planMantenimiento)
+    }
+}
+
+function elegirPlanEntrenamiento() {
+    let nivel = parseInt(prompt('Nivel:\n\n(1) Principiante\n(2) Intermedio\n(3) Avanzado'));
+        if (nivel == 1){
+            planPrincipiante.mostrarContenidoPlanEntrenamiento();
+            comprarPlanEntrenamiento = carrito.push(planPrincipiante)
+        } else if (nivel == 2){
+            planIntermedio.mostrarContenidoPlanEntrenamiento();
+            comprarPlanEntrenamiento = carrito.push(planIntermedio)
+        } else if (nivel == 3){
+            planAvanzado.mostrarContenidoPlanEntrenamiento();
+            comprarPlanEntrenamiento = carrito.push(planAvanzado)
+        }
+        return comprarPlanEntrenamiento;
+}
+
+while (comprar != null) {
+    comprar = parseInt(prompt('Comprar\n\n(1) Plan Alimenticio\n(2) Plan Entrenamiento \n(3) Combo: Plan Alimenticio & Plan Entrenamiento'))
+    if (comprar == 1) {
+        elegirPlanAlimenticio()
         console.log(carrito)
         personalizarPlan()
-    } 
+    } else if (comprar == 2 ){
+        elegirPlanEntrenamiento()
+        console.log(carrito)
+    } else if (comprar == 3){
+        elegirPlanAlimenticio()
+        personalizarPlan()
+        elegirPlanEntrenamiento()
+        console.log(carrito)
+    } else{
+        break
+    }
 }
