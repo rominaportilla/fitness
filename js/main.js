@@ -8,7 +8,6 @@ const saludar = ()=> {
 }
 saludar();
 
-
 const pedirDatos = ()=> {
     genero = parseInt(prompt('Género al nacer:\n(1) Femenino\n(2) Masculino'));
     peso = parseInt(prompt('Peso en kilos:'));
