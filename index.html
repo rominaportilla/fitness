@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ff338c4dd2.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Black+Han+Sans&family=Changa+One&family=DM+Serif+Display&family=DM+Serif+Text&family=Inconsolata:wght@900&family=Inter:wght@800;900&family=Lalezar&family=Montserrat:wght@100;200;300;400;700;800;900&family=PT+Serif:wght@400;700&family=Passion+One:wght@700&family=Raleway:wght@100;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Black+Han+Sans&family=Changa+One&family=DM+Serif+Display&family=DM+Serif+Text&family=Inconsolata:wght@900&family=Inter:wght@800;900&family=Lalezar&family=Montserrat:wght@100;200;300;400;700;800;900&family=PT+Serif:wght@400;700&family=Passion+One:wght@700&family=Raleway:wght@100;900&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -19,10 +21,21 @@
 <body class="container-fluid">
 
     <header class="row">
-        <div class="logo__container col-lg-11 col-md-11 col-sm-11 col-xs-11">
+        <div class="logo__container col-lg-10 col-md-10 col-sm-10 col-xs-10">
             <p class="logo">Fit<span>Roma</span></p>
         </div>
-        <i class="carrito fa-solid fa-cart-shopping col-lg-1 col-md-1 col-sm-1 col-xs-1"></i>
+        <!-- CARRITO -->
+        <button class="btn col-lg-2 col-md-2 col-sm-2 col-xs-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight" id="botonCarrito"><i class="fa-solid fa-cart-shopping"></i></button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header carritoCompras">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div id="carrito" class="offcanvas-body">
+            </div>
+        </div>
     </header>
 
     <section class="row seccion-1">
@@ -30,13 +43,13 @@
             <h2 id="frase-h2">A strong mind leads to <br> a strong body</h2>
         </article>
         <aside class="nav col-lg-5 col-md-5 col-sm-12 col-xs-12">
-            <div id="girl">girl,</div>
+            <div id="nombre">girl,</div>
             <h1>you got this</h1>
             <p>¿How can I help you?</p>
             <ul>
-                <li><a href="#calculator">Calorie Calculator</a></li>
-                <li><a href="#programs">Nutrition & Workout Programs</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="#calculator" class="btn btn-primary">Calorie Calculator</a></li>
+                <li><a href="#programs" class="btn btn-primary">Nutrition & Workout Programs</a></li>
+                <li><a href="#shop" class="btn btn-primary">Shop</a></li>
             </ul>
         </aside>
     </section>
@@ -44,79 +57,69 @@
     <section class="row seccion-2">
         <p class="frase-2 col-lg-12 col-md-12 col-sm-12 col-xs-12">LET'S GET STRONG TOGETHER</p>
         <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness Coaching</h2>
-        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness is one of my biggest passions and something that I am the most proud of since I have dedicated so
+        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness is one of my biggest passions and something that I am
+            the most proud of since I have dedicated so
             much time to learning and growing my knowledge in.</p>
     </section>
 
     <section id="calculator" class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 containerCalculadora">
+            <div id="totalCalorias">
+                <h6 class="caloriasTitulo">CALORÍAS</h6>
+            </div>
+            <form id="datosCalculadora">
+                <!-- edad -->
+                <div class="form-floating">
+                    <input id="edad" type="number" class="form-control" required>
+                    <label>Age (years)</label>
+                </div>
+                <!-- altura -->
+                <div class="form-floating">
+                    <input id="altura" type="number" class="form-control" required>
+                    <label>Height (cm)</label>
+                </div>
+                <!-- peso -->
+                <div class="form-floating">
+                    <input id="peso" type="number" class="form-control" required>
+                    <label>Weight (kg)</label>
+                </div>
+                <!-- género -->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="femenino" name="genero" required>
+                    <label class="form-check-label" for="femenino">Female</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="masculino" name="genero" required>
+                    <label class="form-check-label" for="masculino">Male</label>
+                </div>
+                <!-- actividad física -->
+                <select id="actividadFisica" class="form-select" aria-label="Default select example">
+                    <option selected>Activity</option>
+                    <option value="1" name="little">Little to no exercise</option>
+                    <option value="2" name="light">Light exercise (1-3 days per week)</option>
+                    <option value="3" name="moderate">Moderate exercise (3-5 days per week)</option>
+                    <option value="4" name="heavy">Heavy exercise (6-7 days per week)</option>
+                    <option value="5" name="veryHeavy">Very heavy exercise (twice per day)</option>
+                </select>
+                <!-- radios opciones bulk/cut/mantenimiento -->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calcular" id="deficit" required>
+                    <label class="form-check-label" for="deficit">Calorie Deficit/CUT</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calcular" id="superavit" required>
+                    <label class="form-check-label" for="superavit">Calorie Surplus/BULK</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="calcular" id="mantenimiento" required>
+                    <label class="form-check-label" for="mantenimiento">Maintenance Calories/Body Recomposition</label>
+                </div>
 
-            <!-- edad -->
-            <form class="form-floating">
-                <input type="text" class="form-control" >
-                <label for="floatingInputValue">Age (years)</label>
+                <button id="submitDatosCalculadora" type="submit">=</button>
             </form>
-
-            <!-- altura -->
-            <form class="form-floating">
-                <input type="text" class="form-control" >
-                <label for="floatingInputValue">Height (cm)</label>
-            </form>
-
-            <!-- peso -->
-            <form class="form-floating">
-                <input type="text" class="form-control">
-                <label for="floatingInputValue">Weight (kg)</label>
-            </form>
-
-            <!-- select género -->
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Female
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Male
-                </label>
-            </div>
-
-            <!-- select actividad física -->
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Activity</option>
-                <option value="1">Little to no exercise</option>
-                <option value="2">Light exercise (1-3 days per week)</option>
-                <option value="3">Moderate exercise (3-5 days per week)</option>
-                <option value="4">Heavy exercise (6-7 days per week)</option>
-                <option value="5">Very heavy exercise (twice per day)</option>
-            </select>
-
-            <!-- radios opciones bulk/cut/mantenimiento -->
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Calorie Deficit/CUT
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Calorie Surplus/BULK
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Maintenance Calories/Body Recomposition
-                </label>
-            </div>
-            <button type="submit">=</button>
         </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 faqsContainer">
             <h3>Calorie Calculator</h3>
             <p>FAQs</p>
 
@@ -130,7 +133,8 @@
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">A calorie deficit is when you consume fewer calories than you burn.</div>
+                        <div class="accordion-body">A calorie deficit is when you consume fewer calories than you burn.
+                        </div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -142,7 +146,9 @@
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">A caloric surplus is when the number of calories that we consume is higher than the number of calories we burn. In a caloric surplus, our body mass increases.</div>
+                        <div class="accordion-body">A caloric surplus is when the number of calories that we consume is
+                            higher than the number of calories we burn. In a caloric surplus, our body mass increases.
+                        </div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -155,11 +161,12 @@
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Body recomposition is the goal of increasing lean muscle mass and decreasing body fat mass, which typically happens while eating at maintenance calories.</div>
+                        <div class="accordion-body">Body recomposition is the goal of increasing lean muscle mass and
+                            decreasing body fat mass, which typically happens while eating at maintenance calories.
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -167,144 +174,74 @@
         <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Nutrition & Workout Programs</h3>
 
         <!-- card 1 -->
-        <div class="card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card col-lg-3 col-md-3 col-sm-1 col-xs-1 cardPlan" style="width: 18rem;">
+            <img src="multimedia/previewPlan.png" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+                <h5 class="card-title">PLAN ALIMENTICIO</h5>
+                <p class="card-text">$2500</p>
 
-        <!-- card 2 -->
-        <div class="card card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+                <!-- DETALLES PLAN -->
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Ver detalles
+                </button>
 
-        <!-- card 3 -->
-        <div class="card card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Plan de Alimentación $2500</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body modalForm">
+                                <img src="multimedia/viewPlan.png" alt="plan" width="370px" height="480px">
+                                <form id="detallesPlan">
+                                    <label for="objetivoPlan">Objetivo</label>
+                                    <select id="objetivoPlan" class="form-select" aria-label="Default select example">
+                                        <option selected>Elegir</option>
+                                        <option value="1" name="perdida">Pérdida de grasa corporal</option>
+                                        <option value="2" name="aumento">Aumento de masa muscular</option>
+                                        <option value="3" name="recomposicion">Recomposición corporal</option>
+                                    </select>
 
-        <!-- card 4 -->
-        <div class="card card col-lg-3 col-md-3 col-sm-1 col-xs-1" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </section>
+                                    <label for="tipoPlan">Tipo de Plan</label>
+                                    <select id="tipoPlan" class="form-select" aria-label="Default select example">
+                                        <option selected>Elegir</option>
+                                        <option value="1" name="todos">Todos los alimentos</option>
+                                        <option value="2" name="vegano">Vegano</option>
+                                        <option value="3" name="celiaco">Celíaco</option>
+                                    </select>
 
-<!-- FIT ROMA SHOP -->
+                                    <div>
+                                        <label class="form-label" for="alergico">Alergico/a a:</label>
+                                        <input class="form-control" type="text" id="alergico" placeholder="Opcional">
+                                    </div>
 
-    <section id="shop" class="row">
-        <h3 class="card col-lg-12 col-md-12 col-sm-12 col-xs-12">The FitRoma Shop</h3>
+                                    <div>
+                                        <label class="form-label" for="cantidadPlan">Cantidad</label>
+                                        <input class="form-control" type="number" id="cantidadPlan" placeholder="1">
+                                    </div>
 
-        <!-- card 1 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+                                    <div class="agregado">
+                                        <h6>Añadido al carrito</h6>
+                                    </div>
+                                    <div class="error">
+                                        <h6>Error. Inténtelo nuevamente.</h6>
+                                    </div>
 
-        <!-- card 2 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- card 3 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- card 4 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- card 5 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- card 6 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- card 7 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <!-- card 8 -->
-        <div class="card col-lg-2 col-md-4 col-sm-12 col-xs-12" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-dark">Add cart</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
 
     <!-- ABOUT ME -->
     <section class="roma row">
@@ -323,41 +260,37 @@
     <section class="contact row">
         <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Contact with me</h4>
 
-        <form id="formulario">
+        <form id="contacto" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
             <!-- nombre -->
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <div>
-                    <input name="name" type="text" class="form-control" placeholder="Name" aria-label="First name">
-                </div>
+            <div>
+                <input id="nombreContacto" type="text" class="form-control" placeholder="Name" aria-label="First name">
             </div>
-            
+
             <!-- email -->
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <div>
-                    <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email">
-                </div>
+            <div>
+                <input id="email" type="email" class="form-control mt-1" placeholder="Email" aria-label="Email">
             </div>
-            
+
             <!-- mensaje -->
-            <div class="form-floating col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <textarea name="msj" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                style="height: 100px"></textarea>
+            <div class="form-floating">
+                <textarea id="mensaje" class="form-control mt-1" placeholder="Leave a comment here" id="floatingTextarea2"
+                    style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Comments</label>
             </div>
-            
-            <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">SEND</button>
+
+            <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn btn-dark">SEND</button>
 
         </form>
     </section>
+    <div class="redes row">
+        <a href="https://www.instagram.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
 
     <footer class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            <a href="https://www.instagram.com/" target="_BLANK"><i class="fa-brands fa-instagram icono__footer"></i></a>
-            <a href="https://youtube.com/" target="_BLANK"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/" target="_BLANK"><i class="fa-brands fa-tiktok redes"></i></a>
-        </div>
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <p>Política de Privacidad | Términos de Uso </p>
             <p>Copyright &copy; FitRoma 2022</p>
         </div>

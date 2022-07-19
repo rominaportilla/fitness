@@ -1,127 +1,190 @@
-// Calculadora Nutricional -----------------------------------------------------
+let nombre;
+let datosCalculadora;
+let genero;
+let peso;
+let altura;
+let edad; 
 
 const saludar = ()=> {
-    alert('¡Bienvenido/a! :D Soy Roma, Nutrióloga y Entrenadora Personal.');
-    nombre = prompt('¿Cómo te llamás?');
-    alert(`¡Un placer, ${nombre}! <3 Vamos a armar un plan de entrenamiento y alimentación de acuerdo a tus objetivos.`);
-    alert('Primero, vamos a calcular tu Tasa Metabólica Basal (TMB). Para esto, necesito los siguientes datos...');
+    nombre = prompt("Welcome!\n\nI'm Roma, your Personal Fitness Coach <3\nVamos a armar un plan de entrenamiento y alimentación de acuerdo a tus objetivos.\n\nWhat's your name?");
 }
 saludar();
 
-const pedirDatos = ()=> {
-    genero = parseInt(prompt('Género al nacer:\n(1) Femenino\n(2) Masculino'));
-    peso = parseInt(prompt('Peso en kilos:'));
-    altura = parseInt(prompt('Altura en centímetros:'));
-    edad = parseInt(prompt('Edad en años:'));
+if (nombre != null){
+    let nombreIngresado = document.getElementById('nombre');
+    nombreIngresado.innerText = `${nombre},`;
 }
-pedirDatos(); 
 
-
-const calcularTMB = ()=> {
-    let calculoPeso = 10 * peso;
-    let calculoAltura = 6.25 * altura;
-    let calculoEdad = 5 * edad;
-
-    if (genero == 1){
-        TMB = calculoPeso + calculoAltura - calculoEdad - 161;
-        return TMB
-    } else if(genero == 2){
-        TMB = calculoPeso + calculoAltura - calculoEdad + 5;
-        return TMB
-    } else{
-        alert('No se ingresaron correctamente los datos. Complete nuevamente los datos, por favor');
-        pedirDatos();
-    }
-}
-calcularTMB()
-console.log(`TMB = ${TMB}`)
-
-
-let actividadFisica;
-do{
-    actividadFisica = parseInt(prompt('¿Con qué frecuencia hacés actividad física?\n\n (1) No hago ejercicio\n (2) Hago poco, de 1 a 3 veces por semana\n (3) Hago moderado, de 3 a 5 días\n (4) Hago deporte intenso, 6 o 7 veces por semana\n (5) Soy un atleta profesional con dos entrenamientos diarios'));
-
-    switch(actividadFisica){
-        case 1: 
-            calorias = TMB * 1.2;
-            break;
-        case 2: 
-            calorias = TMB * 1.375;
-            break;
-        case 3:
-            calorias = TMB * 1.55;
-            break;
-        case 4:
-            calorias = TMB * 1.75;
-            break;
-        case 5:
-            calorias = TMB * 1.9;
-            break;
-        default:
-            alert("Necesito saber con cuánta frecuencia hace ejercicio, por favor");
-            break
-    }
-} while(actividadFisica > 5)
-console.log(`Calorías de mantenimiento = ${calorias}`);
-
-
-
-let calcular = prompt('¿Qué te gustaría calcular?\n\n(1) Mi déficit calórico\n(2) Mi superávit calórico\n(3) Mi mantenimiento');
-
-const deficitCalorico = (calorias)=> calorias - 500; 
-const superavitCalorico = (calorias)=> calorias + 500; 
-const mantenimiento = calorias;
-
+// Calculadora Nutricional -----------------------------------------------------
+let TMB;
+let calorias; 
 let totalCalorias;
 
-if (calcular == 1){
-    totalCalorias = deficitCalorico(calorias);
-    console.log(`Déficit calórico = ${totalCalorias}`);
-    alert(`${nombre}, para hacer déficit calórico tenés que consumir aproximadamente ${totalCalorias} calorías al día.`);
-} else if (calcular == 2){
-    totalCalorias = superavitCalorico(calorias);
-    console.log(`Superávit calórico = ${totalCalorias}`);
-    alert(`${nombre}, para hacer superávit calórico tenés que consumir aproximadamente ${totalCalorias} calorías al día. `);
-} else if (calcular == 3){
-    totalCalorias = calorias;
-    console.log(`Mantenimiento = ${totalCalorias}`);
-    alert(`${nombre}, para mantenerte tenés que consumir aproximadamente ${totalCalorias} calorías al día.`)
-}else{
-    alert('Ingrese 1 para saber su déficit calórico, ingrese 2 para saber su superávit calórico, o ingrese 3 pasar saber su mantenimiento, por favor');
+function seleccionarGenero() {
+    if (document.getElementById('femenino').checked) {
+        genero = 'femenino'
+    } else if (document.getElementById('masculino').checked) {
+        genero = 'masculino'
+    }
 }
 
-//Planes de Alimentación -----------------------------------------------------
+function actividadFisica() {
+    if (document.querySelector('[name=little]').selected) {
+        calorias = TMB * 1.2;
+    } else if (document.querySelector('[name=light]').selected) {
+        calorias = TMB * 1.375;
+    } else if (document.querySelector('[name=moderate]').selected) {
+        calorias = TMB * 1.55;
+    } else if(document.querySelector('[name=heavy]').selected){
+        calorias = TMB * 1.75;
+    } else if (document.querySelector('[name=veyHeavy]').selected) {
+        calorias = TMB * 1.9;
+    }
+}
 
+function calcular() {
+    if (document.getElementById('deficit').checked) {
+        const deficitCalorico = (calorias)=> calorias - 500; 
+        totalCalorias = deficitCalorico(calorias);
+        console.log(`Déficit calórico = ${totalCalorias}`);
+    } else if (document.getElementById('superavit').checked) {
+        const superavitCalorico = (calorias)=> calorias + 500;
+        totalCalorias = superavitCalorico(calorias);
+        console.log(`Superávit calórico = ${totalCalorias}`);
+    } else if (document.getElementById('mantenimiento').checked) {
+        const mantenimiento = calorias;
+        totalCalorias = mantenimiento;
+        console.log(`Mantenimiento = ${totalCalorias}`);
+    }
+}
+
+function mostrarResultado() {
+    let resultado = document.getElementById('totalCalorias')
+    let verResultado = document.createElement('p')
+
+    verResultado.innerText = `${totalCalorias}`
+    resultado.append(verResultado)
+}
+
+function inicializarDatos() {
+    datosCalculadora = document.getElementById('datosCalculadora');
+    peso = document.getElementById('peso');
+    altura = document.getElementById('altura');
+    edad = document.getElementById('edad');
+}
+inicializarDatos()
+
+datosCalculadora.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let calculoPeso = 10 * peso.value;
+    let calculoAltura = 6.25 * altura.value;
+    let calculoEdad = 5 * edad.value;
+    seleccionarGenero()
+    if (genero == 'femenino'){
+        TMB = calculoPeso + calculoAltura - calculoEdad - 161;
+    } else if(genero == 'masculino'){
+        TMB = calculoPeso + calculoAltura - calculoEdad + 5;
+    }
+    console.log(`TMB = ${TMB}`)
+
+    actividadFisica()
+    console.log(`Calorías de mantenimiento = ${calorias}`);
+    calcular();
+    mostrarResultado();
+    datosCalculadora.reset();
+})
+
+//Planes de Alimentación y Entrenamiento --------------------------------------------------------------
+let carrito = [];
+let detallesPlan;
 let objetivoPlan;
-
-if (calcular == 1){
-    objetivoPlan = 'Pérdida de grasa corporal';
-} else if (calcular == 2){
-    objetivoPlan = 'Aumento de masa muscular';
-} else{
-    objetivoPlan = 'Recomposición corporal';
-}
+let tipoPlan;
+let alergico;
+let cantidadPlan;
+let agregado;
+let error;
 
 class PlanAlimenticio{
-    constructor(objetivoPlan, totalCalorias, precioPlan){
-        this.objetivoPlan = objetivoPlan.toUpperCase();
-        this.caloriasPlan = totalCalorias;
+    constructor(objetivoPlan, tipoPlan, cantidadPlan, precioPlan){
+        this.objetivoPlan = objetivoPlan;
+        this.tipoPlan = tipoPlan;
+        this.cantidadPlan = parseInt(cantidadPlan);
         this.precioPlan = precioPlan;
-    }
-    mostrarContenidoPlan(){
-        alert(`Plan Alimenticio enfocado en ${this.objetivoPlan}. Precio: ${this.precioPlan}`)
     }
 }
 
-const planDeficit = new PlanAlimenticio (objetivoPlan, totalCalorias, 2500);
-const planSuperavit = new PlanAlimenticio (objetivoPlan, totalCalorias, 9500);
-const planMantenimiento = new PlanAlimenticio (objetivoPlan, totalCalorias, 800);
+function inicializarPlan() {
+    detallesPlan = document.getElementById('detallesPlan');
+    alergico = document.getElementById('alergico');
+    cantidadPlan = document.getElementById('cantidadPlan');
+    agregado = document.querySelector('.agregado');
+    agregado.style.display = 'none';
+    error = document.querySelector(".error")
+    error.style.display = 'none';
+}
+inicializarPlan();
 
+function seleccionarObjetivoPlan() {
+    if (document.querySelector('[name=perdida]').selected) {
+        objetivoPlan = document.querySelector('[name=perdida]').label
+    } else if (document.querySelector('[name=aumento]').selected) {
+        objetivoPlan = document.querySelector('[name=aumento]').label
+    } else if (document.querySelector('[name=recomposicion]').selected) {
+        objetivoPlan = document.querySelector('[name=recomposicion]').label
+    }
+}
 
-const personalizarPlan = () =>{
+function seleccionarTipoPlan() {
+    if (document.querySelector('[name=todos]').selected) {
+        tipoPlan = document.querySelector('[name=todos]').label;
+    } else if (document.querySelector('[name=vegano]').selected) {
+        tipoPlan = document.querySelector('[name=vegano]').label;
+    } else if (document.querySelector('[name=celiaco]').selected) {
+        tipoPlan = document.querySelector('[name=celiaco]').label;
+    }
+}
 
-    alert('¡Vamos a adaptar tu plan nutricional a tu estilo de vida! Respondé las siguientes preguntas, por favor.')
-    let proteinas = [
+function agregarCarrito() {
+    carrito.forEach(producto =>{
+        let carritoDiv = document.querySelector('#carrito')
+        let productoDiv = document.createElement('div')
+        productoDiv.innerHTML = `
+        <h6>Plan de Alimentación</h6>
+        <h6>OBJETIVO: ${producto.objetivoPlan}</h6>
+        <h6>TIPO DE PLAN: ${producto.tipoPlan}</h6>
+        <h6>CANTIDAD: ${producto.cantidadPlan}</h6>
+        <h6>PRECIO: $${producto.precioPlan}</h6>
+        `
+        productoDiv.style.padding = '20px'
+        carritoDiv.append(productoDiv)
+    })
+}
+
+detallesPlan.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    seleccionarObjetivoPlan();
+    seleccionarTipoPlan();
+    let nuevoProducto = new PlanAlimenticio(objetivoPlan, tipoPlan, cantidadPlan.value, 2500)
+    if (objetivoPlan !="" && tipoPlan !="" && cantidadPlan.value != "") {
+        carrito.push(nuevoProducto);
+        agregarCarrito()
+        error.style.display = 'none';
+        agregado.style.display = 'block';
+        filtrarProteinas()
+        filtrarLacteos()
+        filtrarVerduras()
+        filtrarFrutas()
+        filtrarGranos()
+        detallesPlan.reset()
+    } else{
+        error.style.display = 'block';
+    }
+})
+
+let proteinas;
+function filtrarProteinas() {
+    proteinas = [
         {alimento: 'lomo embuchado', proteina : 'animal', sinTacc: true},
         {alimento: 'soja', proteina: 'vegetal', sinTacc: true},
         {alimento: 'queso fresco',proteina: 'vegetal', sinTacc: true},
@@ -141,144 +204,69 @@ const personalizarPlan = () =>{
         {alimento: 'hígado', proteina: 'animal', sinTacc: true},
         {alimento: 'langostinos', proteina: 'animal', sinTacc: true},
         {alimento: 'almendras', proteina: 'vegetal', sinTacc: true},
-        {alimento: 'seitan', proteina: 'vegetal', sinTacc: false},
+        {alimento: 'seitán', proteina: 'vegetal', sinTacc: false},
         {alimento: 'pistachos', proteina: 'vegetal', sinTacc: true},
         {alimento: 'garbanzos', proteina: 'vegetal', sinTacc: true},
         {alimento: 'carne magra de cerdo', proteina: 'animal', sinTacc: true},
         {alimento: 'morcilla', proteina: 'animal', sinTacc: false},
         {alimento: 'salmón', proteina: 'animal', sinTacc: true},
         {alimento: 'merluza', proteina: 'animal', sinTacc: true}];
-        
-    let lacteos = ['leche', 'manteca', 'yogur', 'crema de leche', 'queso', 'dulce de leche'];
-    let verduras = ['berenjena', 'zucchini', 'limón', 'zapallo', 'calabaza', 'lechuga', 'cebolla', 'morrón', 'zanahoria', 'pepino', 'acelga', 'espinaca', 'choclo', 'repollo'];
-    let frutas = ['banana', 'manzana', 'pera', 'durazno', 'kiwi', 'melón', 'sandía', 'uvas', 'papaya', 'tomate', 'frutilla', 'arándanos', 'palta', 'naranja', 'ciruela', 'higo'];
-    let granos = ['pan integral', 'arroz integral', 'cebada', 'avena', 'fideos integrales', 'mijo', 'trigo'];
-    
-    // APTO VEGANOS
-    let vegano = parseInt(prompt('¿Sos vegano/a?\n\n(1) SI\n(2) NO'));
-    if (vegano == 1){
-    let proteinasVegetales = proteinas.filter((item)=> item.proteina == 'vegetal' );
-    let contenidoAlimentosProteicos = proteinasVegetales.map((item) => item.alimento);
-    let contenidoAlimentosLacteos = lacteos.toString();
-    let contenidoVerduras = verduras.toString();
-    let contenidoFrutas = frutas.toString();
-    let contenidoGranos = granos.toString();
-    console.log(`[Contenido Alimentos Plan Nutricional APTO VEGANOS] PROTEÍNAS: ${contenidoAlimentosProteicos}. LÁCTEOS (versión vegetal): ${contenidoAlimentosLacteos}. VERDURAS: ${contenidoVerduras}. FRUTAS: ${contenidoFrutas}. GRANOS: ${contenidoGranos}.`)
-    } else{
-        let contenidoAlimentosProteicos = proteinas.map((item) => item.alimento);
-        let contenidoAlimentosLacteos = lacteos.toString();
-        let contenidoVerduras = verduras.toString();
-        let contenidoFrutas = frutas.toString();
-        let contenidoGranos = granos.toString();
-        console.log(`[Contenido Alimentos Plan Nutricional] PROTEÍNAS: ${contenidoAlimentosProteicos}. LÁCTEOS: ${contenidoAlimentosLacteos}. VERDURAS: ${contenidoVerduras}. FRUTAS: ${contenidoFrutas}. GRANOS: ${contenidoGranos}.`)
-    }
 
-    // APTO CELÍACOS
-    let celiaco = parseInt(prompt('¿Sos celíaco/a? \n\n(1) SI\n(2) NO'));
-    if (celiaco == 1){
-    let glutenFree = proteinas.filter((item)=> item.sinTacc == true);
-    let contenidoAlimentosGlutenFree = glutenFree.map((item) => item.alimento);
-    let contenidoAlimentosLacteos = lacteos.toString();
-    let contenidoVerduras = verduras.toString();
-    let contenidoFrutas = frutas.toString();
-    console.log(`[Contenido Alimentos Plan Nutricional APTO CELÍACOS] PROTEÍNAS: ${contenidoAlimentosGlutenFree}. LÁCTEOS: ${contenidoAlimentosLacteos}. VERDURAS: ${contenidoVerduras}. FRUTAS: ${contenidoFrutas}.`)
-    }else{
-        let contenidoAlimentosProteicos = proteinas.map((item) => item.alimento);
-        let contenidoAlimentosLacteos = lacteos.toString();
-        let contenidoVerduras = verduras.toString();
-        let contenidoFrutas = frutas.toString();
-        let contenidoGranos = granos.toString();
-        console.log(`[Contenido Alimentos Plan Nutricional] PROTEÍNAS: ${contenidoAlimentosProteicos}. LÁCTEOS: ${contenidoAlimentosLacteos}. VERDURAS: ${contenidoVerduras}. FRUTAS: ${contenidoFrutas}. GRANOS: ${contenidoGranos}.`)
-    }
+        let contenidoProteinaAlergicos = proteinas.filter ((item) => item.alimento !== alergico.value);
+        let noAlergiaProteinas = contenidoProteinaAlergicos.map((item) => item.alimento);
 
-    //APTO ALÉRGICOS
-    let alergico = prompt('¿Sos alérgico/a a algún alimento?');
-    let noAlergiaProteinas = proteinas.some((item) => item.alimento == alergico);
-    let noAlergiaLacteos = lacteos.some((item) => item == alergico);
-    let noAlergiaVerduras = verduras.some((item) => item == alergico);
-    let noAlergiaFrutas = frutas.some((item) => item == alergico);
-    let noAlergiaGranos = granos.some((item) => item == alergico);
-    while (noAlergiaProteinas == false && noAlergiaLacteos == false && noAlergiaVerduras == false && noAlergiaFrutas == false && noAlergiaGranos == false){
-    alert('¡Genial!')
-    break
-    }
-    let contenidoProteinaAlergicos = proteinas.filter ((item) => item.alimento !== alergico);
-    let contenidoLactosAlergicos = lacteos.filter ((item) => item !== alergico);
-    let contenidoVerdurasAlergicos = verduras.filter ((item) => item !== alergico);
-    let contenidoFrutasAlergicos = frutas.filter ((item) => item !== alergico);
-    let contenidoGranosAlergicos = granos.filter ((item) => item !== alergico);
-
-    console.log(contenidoProteinaAlergicos);
-    console.log(contenidoLactosAlergicos + contenidoVerdurasAlergicos + contenidoFrutasAlergicos + contenidoGranosAlergicos)
-    alert(`¡Listo ${nombre}! Te enviaremos tu Plan Alimenticio por email. `)
+        if (tipoPlan == 'Vegano'){
+            noAlergiaProteinas = proteinas.filter((item)=> item.proteina == 'vegetal' );
+            let contenidoAlimentosVegetales = noAlergiaProteinas.map((item) => item.alimento);
+            console.log(contenidoAlimentosVegetales)
+            } else if (tipoPlan == 'Celíaco') {
+                noAlergiaProteinas = proteinas.filter((item)=> item.sinTacc == true);
+                let contenidoAlimentosGlutenFree = noAlergiaProteinas.map((item) => item.alimento);
+                console.log(contenidoAlimentosGlutenFree)
+            }else{
+                noAlergiaProteinas = proteinas.map((item) => item.alimento);
+                console.log(contenidoAlimentosProteicos)
+            }
 }
 
-//Planes de Entrenamiento -----------------------------------------------------
-
-class PlanEntrenamiento{
-    constructor (nivelPlan, precio){
-        this.nivelPlan = nivelPlan;
-        this.precio = precio;
-    }
-    mostrarContenidoPlanEntrenamiento(){
-        alert(`Plan Entrenamiento Nivel ${this.nivelPlan}. Precio: ${this.precio}`)
-    }
+let lacteos;
+function filtrarLacteos() {
+    lacteos = ['leche', 'manteca', 'yogur', 'crema de leche', 'queso', 'dulce de leche'];
+    let contenidoLacteosAlergicos = lacteos.filter ((item) => item !== alergico.value);
+    console.log(contenidoLacteosAlergicos)
 }
-const planPrincipiante = new PlanEntrenamiento('Principiante', 3000);
-const planIntermedio = new PlanEntrenamiento('Intermedio', 4000);
-const planAvanzado = new PlanEntrenamiento('Avanzado', 5000);
 
-// Realizar compra ----------------------------------------------------
+let verduras;
+function filtrarVerduras() {
+    verduras = ['berenjena', 'zucchini', 'limón', 'zapallo', 'calabaza', 'lechuga', 'cebolla', 'morrón', 'zanahoria', 'pepino', 'acelga', 'espinaca', 'choclo', 'repollo'];
+    let contenidoVerdurasAlergicos = verduras.filter ((item) => item !== alergico.value);
+    console.log(contenidoVerdurasAlergicos)
+}
 
-let carrito = [];
-let comprar = "";
-let comprarPlanAlimenticio;
-let comprarPlanEntrenamiento;
-let comprarCombo;
+let frutas;
+function filtrarFrutas() {
+    frutas = ['banana', 'manzana', 'pera', 'durazno', 'kiwi', 'melón', 'sandía', 'uvas', 'papaya', 'tomate', 'frutilla', 'arándanos', 'palta', 'naranja', 'ciruela', 'higo'];
+    let contenidoFrutasAlergicos = frutas.filter ((item) => item !== alergico.value);
+    console.log(contenidoFrutasAlergicos)
+}
 
-function elegirPlanAlimenticio() {
-    if (objetivoPlan == 'Pérdida de grasa corporal'){
-        planDeficit.mostrarContenidoPlan();
-        carrito.push(planDeficit)
-    } else if (objetivoPlan == 'Aumento de masa muscular'){
-        planSuperavit.mostrarContenidoPlan();
-        carrito.push(planSuperavit)
-    } else{
-        planMantenimiento.mostrarContenidoPlan()
-        carrito.push(planMantenimiento)
+let granos;
+function filtrarGranos() {
+    granos = ['pan integral', 'arroz integral', 'cebada', 'avena', 'fideos integrales', 'mijo', 'trigo'];
+    let contenidoGranosAlergicos = granos.filter ((item) => item !== alergico.value);
+    if (tipoPlan != 'Celíaco') {
+        console.log(contenidoGranosAlergicos)
     }
 }
 
-function elegirPlanEntrenamiento() {
-    let nivel = parseInt(prompt('Nivel:\n\n(1) Principiante\n(2) Intermedio\n(3) Avanzado'));
-        if (nivel == 1){
-            planPrincipiante.mostrarContenidoPlanEntrenamiento();
-            comprarPlanEntrenamiento = carrito.push(planPrincipiante)
-        } else if (nivel == 2){
-            planIntermedio.mostrarContenidoPlanEntrenamiento();
-            comprarPlanEntrenamiento = carrito.push(planIntermedio)
-        } else if (nivel == 3){
-            planAvanzado.mostrarContenidoPlanEntrenamiento();
-            comprarPlanEntrenamiento = carrito.push(planAvanzado)
-        }
-        return comprarPlanEntrenamiento;
-}
+// Contacto ----------------------------------------------------------------------------
+let contacto = document.querySelector('#contacto');
+let nombreContacto = document.getElementById('nombreContacto');
+let email = document.getElementById('email')
+let mensaje = document.getElementById('mensaje')
 
-while (comprar != null) {
-    comprar = parseInt(prompt('Comprar\n\n(1) Plan Alimenticio\n(2) Plan Entrenamiento \n(3) Combo: Plan Alimenticio & Plan Entrenamiento'))
-    if (comprar == 1) {
-        elegirPlanAlimenticio()
-        console.log(carrito)
-        personalizarPlan()
-    } else if (comprar == 2 ){
-        elegirPlanEntrenamiento()
-        console.log(carrito)
-    } else if (comprar == 3){
-        elegirPlanAlimenticio()
-        personalizarPlan()
-        elegirPlanEntrenamiento()
-        console.log(carrito)
-    } else{
-        break
-    }
-}
+contacto.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    console.log(nombreContacto.value , email.value , mensaje.value);
+    contacto.reset()
+} )
