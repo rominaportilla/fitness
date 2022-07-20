@@ -269,4 +269,6 @@ contacto.addEventListener('submit', (e) =>{
     e.preventDefault();
     console.log(nombreContacto.value , email.value , mensaje.value);
     contacto.reset()
-} )
+} 
+)
+
