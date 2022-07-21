@@ -6,7 +6,7 @@ let altura;
 let edad; 
 
 const saludar = ()=> {
-    nombre = prompt("Welcome!\n\nI'm Roma, your Personal Fitness Coach <3\nVamos a armar un plan de entrenamiento y alimentación de acuerdo a tus objetivos.\n\nWhat's your name?");
+    nombre = prompt("Welcome!\n\nI'm Roma, your Personal Fitness Coach <3\nWe will work together to build the body and mindset of your dreams in a sustainable way. No more restrictions, no more fasting, no more food guilt!!!\n\nWhat's your name?");
 }
 saludar();
 
@@ -258,6 +258,35 @@ function filtrarGranos() {
         console.log(contenidoGranosAlergicos)
     }
 }
+
+// Código de descuento (dentro del carrito) ----------------------------------------
+let ingresarCodigo = document.getElementById('ingresarCodigo');
+let inputCodigo = document.getElementById('inputCodigo');
+
+ingresarCodigo.addEventListener('click',()=>{
+    inputCodigo.innerHTML = `
+    <form id="validarCodigo">
+    <input id="codigo" placeholder="Ingrese el código aquí">
+    <button class="btn btn-dark">Aplicar</button>
+    </form>
+    `
+    let validarCodigo = document.getElementById('validarCodigo');
+    let codigo = document.getElementById('codigo')
+    let valido = document.getElementById('valido');
+    validarCodigo.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    if (codigo.value == 'rominaweb' || codigo.value == 'romiweb' || codigo.value == '30425' || codigo.value == 'ROMINAWEB' || codigo.value == 'ROMIWEB') {
+        codigo.style.border = "3px solid green"
+        valido.innerHTML = `
+        <h6 style= "color: green">Código de descuento aplicado!!!</h6>
+        `
+    } else{
+        codigo.style.border = "3px solid red"
+        valido.innerHTML = `
+        <h6 style= "color:red">Código de descuento inválido :(</h6>
+        `
+    }
+})})
 
 // Contacto ----------------------------------------------------------------------------
 let contacto = document.querySelector('#contacto');
