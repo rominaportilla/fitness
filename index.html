@@ -18,7 +18,34 @@
     <script defer src="js/main.js"></script>
 </head>
 
-<body class="container-fluid">
+<body class="container-fluid" onload="modalSaludo()">
+
+    <button id="modalSaludoBoton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        data-bs-whatever="@mdo" hidden>Open modal for @mdo</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Welcome! </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>I'm Roma,</h4>
+                    <p>your Personal Fitness Coach❤️ <br> We will work together to build the body and mindset of your dreams in a sustainable way. No more restrictions, no more fasting, no more food guilt!!!</p>
+                    <form id="nombreForm">
+                        <div class="mb-3">
+                            <label for="ingresarNombre" class="col-form-label">What's your name?</label>
+                            <input type="text" class="form-control" id="ingresarNombre">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Hi Roma!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header class="row">
         <div class="logo__container col-lg-10 col-md-10 col-sm-10 col-xs-10">

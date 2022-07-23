@@ -1,19 +1,24 @@
-let nombre;
 let datosCalculadora;
 let genero;
 let peso;
 let altura;
 let edad; 
 
-const saludar = ()=> {
-    nombre = prompt("Welcome!\n\nI'm Roma, your Personal Fitness Coach <3\nWe will work together to build the body and mindset of your dreams in a sustainable way. No more restrictions, no more fasting, no more food guilt!!!\n\nWhat's your name?");
-}
-saludar();
+// Saludo ---------------------------------------------------------
+let nombreForm = document.getElementById('nombreForm');
+let ingresarNombre = document.getElementById('ingresarNombre');
+let nombreIngresado = document.getElementById('nombre');
 
-if (nombre != null){
-    let nombreIngresado = document.getElementById('nombre');
-    nombreIngresado.innerText = `${nombre},`;
+let modalSaludo = () =>{
+    let modalSaludoBoton = document.getElementById('modalSaludoBoton');
+    modalSaludoBoton.click();
 }
+nombreForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    if (ingresarNombre != ''){
+        nombreIngresado.innerText = `${ingresarNombre.value},`;
+    }
+})
 
 // Calculadora Nutricional -----------------------------------------------------
 let TMB;
