@@ -316,10 +316,67 @@ let contenidoGranosAlergicos;
 function filtrarGranos() {
     granos = ['pan integral', 'arroz integral', 'cebada', 'avena', 'fideos integrales', 'mijo', 'trigo'];
     contenidoGranosAlergicos = granos.filter ((item) => item !== alergico.value);
-    if (tipoPlan != 'Celíaco') {
-        console.log(contenidoGranosAlergicos)
-    }
+    tipoPlan != 'Celíaco' && console.log(contenidoGranosAlergicos)
 }
+
+//INAUGURAMOS THE FITROMA SHOP --------------------------------------------------------------
+let FitRomaShop = [
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
+];
+
+function pintarCards() {
+    let aux = '';
+    for (let i = 0; i < FitRomaShop.length; i++) {
+        aux += `
+        <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">${FitRomaShop[i].producto}</h5>
+        <p class="card-text">${FitRomaShop[i].categoria}</p>
+        <p>${FitRomaShop[i].precio}</p>
+        <a onclick="agregarCarritoDos({producto: '${FitRomaShop[i].producto}', nombre: '${FitRomaShop[i].categoria}', precio: '${FitRomaShop[i].precio}'})" href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+        </div>
+        `
+    }
+    document.getElementById('FitRomaShop').innerHTML = aux;
+}
+pintarCards()
+
+/* function agregarCarritoDos(objetoProducto) {
+    carrito.push(objetoProducto);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    console.log(carrito)
+} */
 
 // Totales -------------------------------------------------
 let subtotal;
