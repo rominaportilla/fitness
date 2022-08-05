@@ -174,6 +174,10 @@ function eliminarCarrito(item) {
     carrito.splice(item, 1);
     localStorage.setItem('carrito', JSON.stringify(carrito));
     agregarCarrito();
+    console.log(subtotales);
+    subtotales.splice(item, 1);
+    console.log(subtotales);
+    calcularTotal();
 }
 
 let carritoDiv = document.querySelector('#carrito');
@@ -183,8 +187,8 @@ function agregarCarrito() {
         producto = producto + `
         <div>
         <h6>${carrito[i].nombrePlan}</h6>
-        <p>OBJETIVO: ${carrito[i].objetivoPlan}</p>
-        <p>TIPO DE PLAN: ${carrito[i].tipoPlan}</p>
+        <p>${carrito[i].objetivoPlan}</p>
+        <p>${carrito[i].tipoPlan}</p>
         <p>CANTIDAD: ${carrito[i].cantidadPlan}</p>
         <p>PRECIO: $${carrito[i].precioPlan}</p>
         <p onclick="eliminarCarrito(${i})" style="cursor: pointer">remove</p>
@@ -320,57 +324,28 @@ function filtrarGranos() {
 }
 
 //INAUGURAMOS THE FITROMA SHOP --------------------------------------------------------------
-let FitRomaShop = [
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'NECK BRALETTE', categoria: 'SPORTS BRAS', precio: 35},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'LEGGINGS', categoria: 'BOTTOMS & LEGGINGS', precio: 50},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-    {producto: 'CROP TOP', categoria: 'T-SHIRTS & TOPS', precio: 40},
-];
+let aux = '';
 
-function pintarCards() {
-    let aux = '';
-    for (let i = 0; i < FitRomaShop.length; i++) {
+async function obtenerProductos() {
+    const response = await fetch('./productos.json');
+    const productosJson = await response.json();
+
+    for (let i = 0; i < productosJson.length; i++) {
         aux += `
-        <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <div class="card col-lg-2 col-md-2 col-sm-2 col-xs-2" style="width: 18rem;">
+        <img src="${productosJson[i].img}" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">${FitRomaShop[i].producto}</h5>
-        <p class="card-text">${FitRomaShop[i].categoria}</p>
-        <p>${FitRomaShop[i].precio}</p>
-        <a onclick="agregarCarritoDos({producto: '${FitRomaShop[i].producto}', nombre: '${FitRomaShop[i].categoria}', precio: '${FitRomaShop[i].precio}'})" href="#" class="btn btn-primary">Add to cart</a>
+        <h5 class="card-title">${productosJson[i].producto}</h5>
+        <p class="card-text">${productosJson[i].categoria}</p>
+        <p>${productosJson[i].precio}</p>
+        <a onclick="agregarCarritoDos({producto: '${productosJson[i].producto}', nombre: '${productosJson[i].categoria}', precio: '${productosJson[i].precio}'})" href="#" class="btn btn-primary">Add to cart</a>
         </div>
         </div>
         `
     }
     document.getElementById('FitRomaShop').innerHTML = aux;
 }
-pintarCards()
+obtenerProductos();
 
 /* function agregarCarritoDos(objetoProducto) {
     carrito.push(objetoProducto);
