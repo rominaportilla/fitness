@@ -84,7 +84,7 @@ h1{
     align-items: center;
     display: flex;
     justify-content: center;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-name: nombreAnimacion;
     animation-iteration-count: infinite;
 }
@@ -293,6 +293,20 @@ h1{
     height: 169px;
     font-family: 'DM Serif Display', serif;
     font-size: 105px;
+}
+#shop{
+    margin: 100px 50px 0px 50px;
+}
+#shop h3{
+    font-size: 5em;
+}
+.categoriasShop li{
+    display: inline;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+#FitRomaShop{
+    margin-top: 100px;
 }
 .contact{
     margin: 100px 300px;

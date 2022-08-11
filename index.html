@@ -17,14 +17,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Fitness Coaching - FitRoma</title>
-    <script defer src="js/main.js"></script>
 </head>
 
 <body class="container-fluid" onload="modalSaludo()">
 
     <!-- -----------------------------------------modal saludo------------------------------------------ -->
-    <button id="modalSaludoBoton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalContainer"
-        data-bs-whatever="@mdo" hidden></button>
+    <button id="modalSaludoBoton" type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#modalContainer" data-bs-whatever="@mdo" hidden></button>
 
     <div id="modalContainer" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -35,14 +34,16 @@
                 </div>
                 <div class="modal-body">
                     <h4>I'm Roma,</h4>
-                    <p>your Personal Fitness Coach❤️ <br> We will work together to build the body and mindset of your dreams in a sustainable way. No more restrictions, no more fasting, no more food guilt!!!</p>
+                    <p>your Personal Fitness Coach❤️ <br> We will work together to build the body and mindset of your
+                        dreams in a sustainable way. No more restrictions, no more fasting, no more food guilt!!!</p>
                     <form id="nombreForm">
                         <div class="mb-3">
                             <label for="nombreInput" class="col-form-label">What's your name?</label>
-                            <input id="nombreInput" type="text" class="form-control" >
+                            <input id="nombreInput" type="text" class="form-control">
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Hi Roma!</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Hi
+                                Roma!</button>
                         </div>
                     </form>
                 </div>
@@ -56,23 +57,28 @@
             <p class="logo">Fit<span>Roma</span></p>
         </div>
         <!-- ----------------------------------------- carrito ------------------------------------------ -->
-        <button id="botonCarrito" class="btn col-lg-2 col-md-2 col-sm-2 col-xs-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+        <button id="botonCarrito" class="btn col-lg-2 col-md-2 col-sm-2 col-xs-2" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+                class="fa-solid fa-cart-shopping"></i></button>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header carritoCompras">
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">SHOPPING CART</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            <button class="vaciarButton">Vaciar carrito</button>
             <div id="carrito" class="offcanvas-body">
             </div>
+            <div class="offcanvas-body itemsCarritoContainer"></div>
             <div id="containerTotal">
                 <h4>Total</h4>
                 <div id="totalCarrito"></div>
-                <h5 id="ingresarCodigo">Have a promo code?</h5>
+                <p class="carritoTotalShop">$0</p>
+                <h6 id="ingresarCodigo">Have a promo code?</h6>
                 <div id="inputCodigo"></div>
                 <div id="valido"></div>
             </div>
+            <button class="comprarButton">Comprar</button>
         </div>
     </header>
 
@@ -112,17 +118,17 @@
             <form id="datosCalculadora">
                 <!-- edad -->
                 <div class="form-floating">
-                    <input id="edad" type="number" class="form-control" required>
+                    <input id="edad" type="number" class="form-control" min="1" required>
                     <label>Age (years)</label>
                 </div>
                 <!-- altura -->
                 <div class="form-floating">
-                    <input id="altura" type="number" class="form-control" required>
+                    <input id="altura" type="number" class="form-control" min="1" required>
                     <label>Height (cm)</label>
                 </div>
                 <!-- peso -->
                 <div class="form-floating">
-                    <input id="peso" type="number" class="form-control" required>
+                    <input id="peso" type="number" class="form-control" min="1" required>
                     <label>Weight (kg)</label>
                 </div>
                 <!-- género -->
@@ -213,7 +219,7 @@
         </div>
     </section>
 
-        <!-- ----------------------------------------- programas ------------------------------------------ -->
+    <!-- ----------------------------------------- programas ------------------------------------------ -->
     <section id="programs" class="row">
         <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Nutrition & Workout Programs</h3>
 
@@ -225,12 +231,13 @@
                 <p class="card-text">$2500</p>
 
                 <!-- detalles plan -->
-                <button id="botonPlan" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalPlan">
+                <button id="botonPlan" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    data-bs-target="#modalPlan">
                     Ver detalles
                 </button>
 
                 <!-- modal plan -->
-                <div id="modalPlan" class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div id="modalPlan" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -245,9 +252,12 @@
                                     <label for="objetivoPlan">Objetivo</label>
                                     <select id="objetivoPlan" class="form-select" aria-label="Default select example">
                                         <option selected>Elegir</option>
-                                        <option value="1" name="perdidaPlanAlimenticio">Pérdida de grasa corporal</option>
-                                        <option value="2" name="aumentoPlanAlimenticio">Aumento de masa muscular</option>
-                                        <option value="3" name="recomposicionPlanAlimenticio">Recomposición corporal</option>
+                                        <option value="1" name="perdidaPlanAlimenticio">Pérdida de grasa corporal
+                                        </option>
+                                        <option value="2" name="aumentoPlanAlimenticio">Aumento de masa muscular
+                                        </option>
+                                        <option value="3" name="recomposicionPlanAlimenticio">Recomposición corporal
+                                        </option>
                                     </select>
 
                                     <label for="tipoPlan">Tipo de Plan</label>
@@ -265,7 +275,8 @@
 
                                     <div>
                                         <label class="form-label" for="cantidadPlanAlimenticio">Cantidad</label>
-                                        <input class="form-control" type="number" id="cantidadPlanAlimenticio" placeholder="1">
+                                        <input class="form-control" type="number" id="cantidadPlanAlimenticio" min="1"
+                                            value="1">
                                     </div>
 
                                     <div class="modal-footer">
@@ -287,12 +298,13 @@
                 <p class="card-text">$2300</p>
 
                 <!-- detalles plan -->
-                <button id="botonPlanEntrenamiento" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalPlanEntrenamiento">
+                <button id="botonPlanEntrenamiento" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    data-bs-target="#modalPlanEntrenamiento">
                     Ver detalles
                 </button>
 
                 <!-- modal plan -->
-                <div id="modalPlanEntrenamiento" class="modal fade"  tabindex="-1" aria-labelledby="modalPlanDos"
+                <div id="modalPlanEntrenamiento" class="modal fade" tabindex="-1" aria-labelledby="modalPlanDos"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -305,15 +317,20 @@
                                 <img src="multimedia/planEntrenamiento.png" alt="plan" width="370px" height="480px">
                                 <form id="detallesPlanEntrenamiento">
                                     <label for="objetivoPlanEntrenamiento">Objetivo</label>
-                                    <select id="objetivoPlanEntrenamiento" class="form-select" aria-label="Default select example">
+                                    <select id="objetivoPlanEntrenamiento" class="form-select"
+                                        aria-label="Default select example">
                                         <option selected>Elegir</option>
-                                        <option value="1" name="perdidaPlanEntrenamiento">Pérdida de grasa corporal</option>
-                                        <option value="2" name="aumentoPlanEntrenamiento">Aumento de masa muscular</option>
-                                        <option value="3" name="recomposicionPlanEntrenamiento">Recomposición corporal</option>
+                                        <option value="1" name="perdidaPlanEntrenamiento">Pérdida de grasa corporal
+                                        </option>
+                                        <option value="2" name="aumentoPlanEntrenamiento">Aumento de masa muscular
+                                        </option>
+                                        <option value="3" name="recomposicionPlanEntrenamiento">Recomposición corporal
+                                        </option>
                                     </select>
 
                                     <label for="tipoPlanEntrenamiento">Nivel</label>
-                                    <select id="tipoPlanEntrenamiento" class="form-select" aria-label="Default select example">
+                                    <select id="tipoPlanEntrenamiento" class="form-select"
+                                        aria-label="Default select example">
                                         <option selected>Elegir</option>
                                         <option value="1" name="principiante">Principiante</option>
                                         <option value="2" name="intermedio">Intermedio</option>
@@ -322,7 +339,8 @@
 
                                     <div>
                                         <label class="form-label" for="cantidadPlanEntrenamiento">Cantidad</label>
-                                        <input class="form-control" type="number" id="cantidadPlanEntrenamiento" placeholder="1">
+                                        <input class="form-control" type="number" id="cantidadPlanEntrenamiento" min="1"
+                                            value="1">
                                     </div>
 
                                     <div class="modal-footer">
@@ -335,7 +353,7 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
 
     <!-- ----------------------------------------- sobre mí ------------------------------------------ -->
@@ -351,25 +369,35 @@
         </aside>
     </section>
 
-    <section id="FitRomaShop" class="row">
-
+    <!-- ----------------------------------------- The FitRoma Shop ------------------------------------------ -->
+    <section id="shop" class="row">
+        <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">The FitRoma Shop</h3>
+        <ul class="col-lg-12 col-md-12 col-sm-12 col-xs-12 categoriasShop">
+            <li id="all">All(30)</li>
+            <li id="leggings">Leggings(8)</li>
+            <li id="sportsbras">Sports Bras(4)</li>
+            <li id="shorts">Shorts(8)</li>
+            <li id="tops">T-Shirts & Tops(10)</li>
+        </ul>
+        <div id="FitRomaShop" class="row"></div>
     </section>
+
     <!-- ----------------------------------------- contacto ------------------------------------------ -->
     <section class="contact row">
         <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Contact with me</h4>
         <form id="contacto" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!-- nombre -->
             <div>
-                <input id="nombreContacto" type="text" class="form-control" placeholder="Name" aria-label="First name">
+                <input id="nombreContacto" type="text" class="form-control" placeholder="Name" aria-label="First name" required>
             </div>
             <!-- email -->
             <div>
-                <input id="email" type="email" class="form-control mt-1" placeholder="Email" aria-label="Email">
+                <input id="email" type="email" class="form-control mt-1" placeholder="Email" aria-label="Email" required>
             </div>
             <!-- mensaje -->
             <div class="form-floating">
-                <textarea id="mensaje" class="form-control mt-1" placeholder="Leave a comment here" id="floatingTextarea2"
-                    style="height: 100px"></textarea>
+                <textarea id="mensaje" class="form-control mt-1" placeholder="Leave a comment here"
+                    id="floatingTextarea2" style="height: 100px" required></textarea>
                 <label for="floatingTextarea2">Comments</label>
             </div>
             <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn btn-dark">SEND</button>
@@ -378,9 +406,12 @@
 
     <!-- ----------------------------------------- redes ------------------------------------------ -->
     <div class="redes row">
-        <a href="https://www.instagram.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://youtube.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i
+                class="fa-brands fa-instagram"></i></a>
+        <a href="https://youtube.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i
+                class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i
+                class="fa-brands fa-tiktok"></i></a>
     </div>
 
     <!-- ----------------------------------------- footer ------------------------------------------ -->
@@ -397,5 +428,9 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/contacto.js"></script>
 </body>
+
 </html>

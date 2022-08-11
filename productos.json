@@ -1,106 +1,260 @@
 [
     {
-        "producto": "NECK BRALETTE",
+        "producto": "Sunset Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/calza1.png",
+        "imgHover": "multimedia/calza2.png"
+    },
+
+    {
+        "producto": "Petrol Blue Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging.png",
+        "imgHover": "multimedia/legging1.png"
+    },
+
+    {
+        "producto": "Peach Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging4.png",
+        "imgHover": "multimedia/legging5.png"
+    },
+
+    {
+        "producto": "Green Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging2.png",
+        "imgHover": "multimedia/legging3.png"
+    },
+
+    {
+        "producto": "Deep Taupe Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging6.png",
+        "imgHover": "multimedia/legging7.png"
+    },
+
+    {
+        "producto": "Black Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging8.png",
+        "imgHover": "multimedia/legging9.png"
+    },
+
+    {
+        "producto": "Smoke grey Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging10.png",
+        "imgHover": "multimedia/legging11.png"
+    },
+
+    {
+        "producto": "Purple Classic Seamless Leggings",
+        "categoria": "LEGGINGS",
+        "precio": 50,
+        "img": "multimedia/legging12.png",
+        "imgHover": "multimedia/legging13.png"
+    },
+
+
+
+
+
+
+    {
+        "producto": "Sunset Effortless Neck Bralette",
         "categoria": "SPORTS BRAS",
         "precio": 35,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/top1.png",
+        "imgHover": "multimedia/top2.png"
     },
 
     {
-        "producto": "NECK BRALETTE",
+        "producto": "Green Effortless Neck Bralette",
         "categoria": "SPORTS BRAS",
         "precio": 35,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/sportbra.png",
+        "imgHover": "multimedia/sportbra1.png"
     },
 
     {
-        "producto": "NECK BRALETTE",
+        "producto": "Purple Effortless Neck Bralette",
         "categoria": "SPORTS BRAS",
         "precio": 35,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/sportbra2.png",
+        "imgHover": "multimedia/sportbra3.png"
     },
 
     {
-        "producto": "NECK BRALETTE",
+        "producto": "Cute Effortless Neck Bralette",
         "categoria": "SPORTS BRAS",
         "precio": 35,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/sportbra4.png",
+        "imgHover": "multimedia/sportbra5.png"
     },
 
-    {
-        "producto": "NECK BRALETTE",
-        "categoria": "SPORTS BRAS",
-        "precio": 35,
-        "img": "multimedia/producto0.png"
-    },
+
+
+
+
 
     {
-        "producto": "LEGGINGS",
-        "categoria": "BOTTOMS & LEGGINGS",
+        "producto": "Light Denim Classic Seamless Shorts",
+        "categoria": "SHORTS",
         "precio": 50,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/short1.png",
+        "imgHover": "multimedia/short2.png"
     },
 
     {
-        "producto": "LEGGINGS",
-        "categoria": "BOTTOMS & LEGGINGS",
+        "producto": "Green Classic Seamless Shorts",
+        "categoria": "SHORTS",
         "precio": 50,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/short3.png",
+        "imgHover": "multimedia/short4.png"
     },
 
     {
-        "producto": "LEGGINGS",
-        "categoria": "BOTTOMS & LEGGINGS",
+        "producto": "Grey Classic Seamless Shorts",
+        "categoria": "SHORTS",
         "precio": 50,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/short5.png",
+        "imgHover": "multimedia/short6.png"
     },
 
     {
-        "producto": "LEGGINGS",
-        "categoria": "BOTTOMS & LEGGINGS",
+        "producto": "Mineral Green Classic Seamless Shorts",
+        "categoria": "SHORTS",
         "precio": 50,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/short7.png",
+        "imgHover": "multimedia/short8.png"
     },
 
     {
-        "producto": "LEGGINGS",
-        "categoria": "BOTTOMS & LEGGINGS",
+        "producto": "Fuchsia Classic Seamless Shorts",
+        "categoria": "SHORTS",
         "precio": 50,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/short9.png",
+        "imgHover": "multimedia/short10.png"
     },
 
     {
-        "producto": "CROP TOP",
+        "producto": "Sunset Classic Seamless Leggings",
+        "categoria": "SHORTS",
+        "precio": 50,
+        "img": "multimedia/short11.png",
+        "imgHover": "multimedia/short12.png"
+    },
+
+    {
+        "producto": "Petrol Blue Classic Seamless Shorts",
+        "categoria": "SHORTS",
+        "precio": 50,
+        "img": "multimedia/short13.png",
+        "imgHover": "multimedia/short14.png"
+    },
+
+    {
+        "producto": "Purple Classic Seamless Shorts",
+        "categoria": "SHORTS",
+        "precio": 50,
+        "img": "multimedia/short15.png",
+        "imgHover": "multimedia/short16.png"
+    },
+
+
+
+
+
+
+
+
+
+
+    {
+        "producto": "Mineral Green Seamless Long Sleeve Crop Top",
         "categoria": "T-SHIRTS & TOPS",
         "precio": 40,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/longSleeveCropTop1.png",
+        "imgHover": "multimedia/longSleeveCropTop.png"
     },
 
     {
-        "producto": "CROP TOP",
+        "producto": "Fuchsia Seamless Long Sleeve Crop Top",
         "categoria": "T-SHIRTS & TOPS",
         "precio": 40,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/top5.png",
+        "imgHover": "multimedia/top6.png"
     },
 
     {
-        "producto": "CROP TOP",
+        "producto": "Black Classic Crop Top",
         "categoria": "T-SHIRTS & TOPS",
         "precio": 40,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/top7.png",
+        "imgHover": "multimedia/top8.png"
     },
 
     {
-        "producto": "CROP TOP",
+        "producto": "Light Denim Seamless Long Sleeve Crop Top",
         "categoria": "T-SHIRTS & TOPS",
         "precio": 40,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/longSleeveCropTop2.png",
+        "imgHover": "multimedia/longSleeveCropTop3.png"
     },
 
     {
-        "producto": "CROP TOP",
+        "producto": "Smoke Grey Seamless Short Sleeve Crop Top",
         "categoria": "T-SHIRTS & TOPS",
         "precio": 40,
-        "img": "multimedia/producto0.png"
+        "img": "multimedia/shortSleeveCropTop.png",
+        "imgHover": "multimedia/shortSleeveCropTop1.png"
+    },
+
+    {
+        "producto": "Peach Oversized Short Sleeve Tee",
+        "categoria": "T-SHIRTS & TOPS",
+        "precio": 40,
+        "img": "multimedia/remera5.png",
+        "imgHover": "multimedia/remera6.png"
+    },
+
+    {
+        "producto": "Midnight Oversized Short Sleeve Tee",
+        "categoria": "T-SHIRTS & TOPS",
+        "precio": 40,
+        "img": "multimedia/remera3.png",
+        "imgHover": "multimedia/remera4.png"
+    },
+
+    {
+        "producto": "Evergreen Seamless Long Sleeve Crop Top",
+        "categoria": "T-SHIRTS & TOPS",
+        "precio": 40,
+        "img": "multimedia/longSleeveCropTop4.png",
+        "imgHover": "multimedia/longSleeveCropTop5.png"
+    },
+
+    {
+        "producto": "Petrol Blue Seamless Short Sleeve Crop Top",
+        "categoria": "T-SHIRTS & TOPS",
+        "precio": 40,
+        "img": "multimedia/shortSleeveCropTop3.png",
+        "imgHover": "multimedia/shortSleeveCropTop2.png"
+    },
+    
+    {
+        "producto": "Lila Seamless Long Sleeve Crop Top",
+        "categoria": "T-SHIRTS & TOPS",
+        "precio": 40,
+        "img": "multimedia/top3.png",
+        "imgHover": "multimedia/top4.png"
     }
 ]

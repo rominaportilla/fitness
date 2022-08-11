@@ -170,14 +170,37 @@ function seleccionarTipoPlanEntrenamiento() {
     }
 }
 
+// Totales --------------------------------
+let subtotal;
+let subtotales = [];
+let total;
+let totalCarrito = document.getElementById('totalCarrito');
+
+function calcularTotal(){
+    for(let i = 0; i < carrito.length; i++){ 
+        subtotal = carrito[i].cantidadPlan * carrito[i].precioPlan;
+    }
+    subtotales.push(subtotal);
+    console.log(subtotales);
+    console.log(`subtotal: ${subtotal}`);
+    actualizarTotal()
+}
+
+function actualizarTotal() {
+    let valorInicial = 0;
+    total = subtotales.reduce((valorAnterior, valorActual) => valorAnterior + valorActual, valorInicial);
+    totalCarrito.innerText = `${total}`;
+    console.log(total); 
+}
+
 function eliminarCarrito(item) {
     carrito.splice(item, 1);
+    subtotales.splice(item,1);
     localStorage.setItem('carrito', JSON.stringify(carrito));
+    console.log(subtotales);
     agregarCarrito();
-    console.log(subtotales);
-    subtotales.splice(item, 1);
-    console.log(subtotales);
-    calcularTotal();
+    actualizarTotal();
+    console.log(carrito)
 }
 
 let carritoDiv = document.querySelector('#carrito');
@@ -194,6 +217,7 @@ function agregarCarrito() {
         <p onclick="eliminarCarrito(${i})" style="cursor: pointer">remove</p>
         </div>
         `
+        console.log(carrito)
     }
     document.getElementById('carrito').innerHTML = producto;
 }
@@ -323,56 +347,6 @@ function filtrarGranos() {
     tipoPlan != 'Celíaco' && console.log(contenidoGranosAlergicos)
 }
 
-//INAUGURAMOS THE FITROMA SHOP --------------------------------------------------------------
-let aux = '';
-
-async function obtenerProductos() {
-    const response = await fetch('./productos.json');
-    const productosJson = await response.json();
-
-    for (let i = 0; i < productosJson.length; i++) {
-        aux += `
-        <div class="card col-lg-2 col-md-2 col-sm-2 col-xs-2" style="width: 18rem;">
-        <img src="${productosJson[i].img}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${productosJson[i].producto}</h5>
-        <p class="card-text">${productosJson[i].categoria}</p>
-        <p>${productosJson[i].precio}</p>
-        <a onclick="agregarCarritoDos({producto: '${productosJson[i].producto}', nombre: '${productosJson[i].categoria}', precio: '${productosJson[i].precio}'})" href="#" class="btn btn-primary">Add to cart</a>
-        </div>
-        </div>
-        `
-    }
-    document.getElementById('FitRomaShop').innerHTML = aux;
-}
-obtenerProductos();
-
-/* function agregarCarritoDos(objetoProducto) {
-    carrito.push(objetoProducto);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    console.log(carrito)
-} */
-
-// Totales -------------------------------------------------
-let subtotal;
-let subtotales = [];
-let total;
-let totalCarrito = document.getElementById('totalCarrito');
-function calcularTotal(){
-    for(let i = 0; i < carrito.length; i++){ 
-        subtotal = carrito[i].cantidadPlan * carrito[i].precioPlan;
-    }
-    subtotales.push(subtotal);
-    console.log(`subtotal: ${subtotal}`);
-
-    total = 0;
-    for (let i = 0; i < subtotales.length; i++) {
-    total += subtotales[i];
-    }
-    console.log(`total: ${total}`);
-    totalCarrito.innerText = `${total}`;
-}
-
 // Código de descuento ----------------------------------------
 let ingresarCodigo = document.getElementById('ingresarCodigo');
 let inputCodigo = document.getElementById('inputCodigo');
@@ -389,11 +363,17 @@ ingresarCodigo.addEventListener('click',()=>{
     let valido = document.getElementById('valido');
     validarCodigo.addEventListener('submit', (e)=>{
     e.preventDefault()
-    if (codigo.value == 'rominaweb' || codigo.value == 'romiweb' || codigo.value == 'ROMINAWEB' || codigo.value == 'ROMIWEB') {
+    if (codigo.value == 'ROMIWEB' || codigo.value == 'romiweb' || codigo.value == 'ALETUTOR' || codigo.value == 'aletutor') {
         codigo.style.border = "3px solid rgb(24, 225, 68)"
         valido.innerHTML = `
         <h6 style= "color: rgb(24, 225, 68)">Discount code applied!</h6>
         `
+        let porcentaje = total * 0.7;
+        let descuento = total - porcentaje;
+        totalCarrito.innerHTML = `
+        <del>${total}</del>
+        <p style= "color: rgb(24, 225, 68)" >${descuento}</p>
+        `;
     } else{
         codigo.style.border = "3px solid red"
         valido.innerHTML = `
@@ -401,15 +381,3 @@ ingresarCodigo.addEventListener('click',()=>{
         `
     }
 })})
-
-// Contacto ----------------------------------------------------------------------------
-let contacto = document.querySelector('#contacto');
-let nombreContacto = document.getElementById('nombreContacto');
-let email = document.getElementById('email')
-let mensaje = document.getElementById('mensaje')
-
-contacto.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    console.log(`NOMBRE: ${nombreContacto.value} EMAIL: ${email.value} MENSAJE: ${mensaje.value}`);
-    contacto.reset()
-})
