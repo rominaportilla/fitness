@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 body{
-    font-family: 'DM Serif Display', serif;
-    background-color: #f5f5f5;
+    font-family: 'Abhaya Libre', serif;
+    background-color: #eeeeee;
     color: rgb(53, 53, 53);
 }
 ul{
@@ -17,137 +17,174 @@ header{
     justify-content: space-between;
     align-items: center;
     position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.modalContent{
+    background-color: #eeeeee;
+    color: rgb(53, 53, 53);
+    font-size: 1.2em;
+}
+.modalContent h5{
+    font-size: 1.5em;
+}
+.modalContent h4{
+    font-family: 'DM Serif Display', serif;
+    font-size: 2em;
+}
+.modalButtonContainer{
+    position: relative;
+    height: 40px;
+}
+#nombreForm input{
+    font-family: 'Roboto Mono', monospace;
+}
+.modalButtonContainer .modalButton{
+    color: #fff;
+    font-family: 'DM Serif Text', serif;
+    border: none;
+    position: absolute;
+    right: 10px;
+}
+.modalButton:hover{
+    background-color: #e3329c;
 }
 .logo__container{
     width: 67%;
     margin: 0;
     padding: 0;
 }
+.logo__container a{
+    text-decoration: none;
+}
 .logo {
     font-family: 'Changa One', cursive;
-    font-size: 4em;
-    font-weight: bold;
-    color: #737373;
-    padding: 30px 0px 30px 50px;
+    font-size: 2.5em;
+    color: #3a3a3a;
+    padding: 20px 0px 20px 40px;
     margin: 0;
 }
 .logo span{
-    color: rgb(75, 75, 75);
+    color:rgb(24, 225, 68);
+    background-color: #e3329c;
+    padding: 5px;
 }
 #botonCarrito{
-    padding: 0px;
-    text-align: center;
+    padding: 0px 30px 0px 0px ;
+    text-align: end;
 }
 #botonCarrito i{
-    font-size: 2.7em;
+    font-size: 2em;
+    color: #3a3a3a;
+}
+#offcanvasRight{
+    padding: 0;
+    font-family: 'DM Serif Display', serif;
+    background-color: #eeeeee;
+    color: rgb(53, 53, 53)
+}
+/* .offcanvas-end {
+    width: 600px;
+} */
+.carritoCompras{
+    border-bottom:1px solid #3a3a3a;
+    font-size: 2em;
+}
+.carritoCompras h5{
+    font-size: 1em;
+}
+.offcanvas .btn-close{
+    font-size: 13px;
+}
+.carritoItem{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1em;
+    padding: 15px 0px;
+    border-bottom: 1px solid #777777;
+}
+.carritoItem h5{
+    font-size: 1em;
+}
+.carritoItem p{
+    margin: 0;
 }
 #containerTotal{
     padding: 20px;
-    color: #fff;
-    background-color: #373737;
+    border-top: 1px solid #3a3a3a;
+}
+#containerTotal h4{
+    font-size: 2em;
 }
 #ingresarCodigo{
     cursor: pointer;
+    text-decoration: underline;
+}
+#codigo{
+    font-family: 'Roboto Mono', monospace;
+}
+.botonApply{
+    font-size: 14px;
+    padding: 5px;
+}
+#totalCarrito{
+    font-size: 1.5em;
+}
+.comprarButton{
+    margin: 10px;
 }
 .seccion-1{
-    margin: 50px 0px;
+    margin: 30px 0px;
+}
+.seccion-1 article{
+    margin: 0px;
 }
 .seccion-1 .frase-1 h2{
     font-family: 'Black Han Sans', sans-serif;
     font-size: 7.5em;
     font-weight: 500;
-    color: #373737;
+    color: rgb(255, 166, 0);
     line-height: 1;
-    padding: 10px 15px 15px 15px ;
+    padding: 10px 0px 15px 15px ;
 }
 .seccion-1 .nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0px 20px 0px 0px;
 }
 h1{
+    font-family: 'DM Serif Display', serif;
     font-size: 6em;
     font-weight: 500;
-    color: #373737;
+    color: rgb(86, 96, 229);
     line-height: 1;
     padding: 0;
     width: 100%;
     text-align: center;
 }
 #nombre{
+    font-family: 'Roboto Mono', monospace;
+    color: (86, 96, 229);
     padding: 15px;
     width: 400px;
-    height: 200px;
-    font-size: 9em;
-    transform: rotate(350deg);
+    height: 130px;
+    font-size: 6em;
     align-items: center;
     display: flex;
     justify-content: center;
-    animation-duration: 4s;
-    animation-name: nombreAnimacion;
-    animation-iteration-count: infinite;
+    position: relative;
 }
-@keyframes nombreAnimacion {
-    0% {
-        background-color: rgb(255, 166, 32);
-        color:rgb(86, 96, 229);
-        font-family: 'DM Serif Display', serif;
-    }
-    10%{
-        background-color: rgb(159, 3, 110);
-        color: rgb(249, 119, 197);
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        
-    }
-    20% {
-        background-color: rgb(26, 3, 159);
-        color: rgb(87, 193, 255);
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
-    30%{
-        background-color: rgb(0, 0, 0);
-        color: white;
-        font-family: 'PT Serif', serif;
-    }
-    40%{
-        background-color: rgb(4, 115, 33);
-        color: rgb(241, 90, 2);
-        font-family:'Inconsolata', monospace;
-    }
-    50%{
-        background-color: rgb(225, 29, 104);
-        color: rgb(255, 255, 255);
-        font-family:'Passion One', cursive;
-    }
-    60%{
-        background-color: rgb(96, 9, 162);
-        color: rgb(3, 159, 139);
-        font-family:'Changa One', cursive;
-    }
-    70%{
-        background-color: rgb(225, 24, 24);
-        color: rgb(47, 3, 159);
-        font-family:'DM Serif Text', serif;
-    }
-    80%{
-        background-color: rgb(24, 225, 68);
-        color: rgb(159, 3, 110);
-        font-family:'Changa One', cursive;
-    }
-    90%{
-        background-color: rgb(3, 123, 159);
-        color: rgb(119, 249, 229);
-        font-family: 'Inter', sans-serif;
-    }
-    100% {
-        background-color: rgb(255, 166, 32);
-        color:rgb(86, 96, 229);
-        font-family: 'DM Serif Display', serif;
-}}
+@keyframes maquina{
+    from{width: 100%;}
+    to{width: 0;}
+}
 .seccion-1 .nav p{
+    font-family: 'DM Serif Display', serif;
+    color: rgb(70, 78, 197);
     font-size: 2.1em;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 .seccion-1 aside {
     padding: 0;
@@ -160,44 +197,51 @@ h1{
     text-align: center;
 } 
 .seccion-1 aside ul li a{
-    font-size: 1.8em;
-    background-color: #373737;
-    border: #373737;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4em;
+    background-color: rgb(70, 78, 197);
+    color: #eeeeee;
 }
 .seccion-1 aside ul li a:hover{
-    background-color: #0d0d0d;
-} 
+    background-color: rgb(44, 50, 133);
+    color: #eeeeee;
+}
 .seccion-2{
-    margin: 120px 50px;
+    margin: 70px 30px 0px 30px;
 }
 .seccion-2 .frase-2{
     font-family: 'Archivo Black', sans-serif;
-    font-size: 6.8em;
+    font-size: 5em;
     font-weight: bolder;
-    color: #70707030;
+    color: #c9acf9b8;
     line-height: 1;
     text-align: right;
 }
 .seccion-2 h2{
-    font-size: 7em;
+    font-size: 4em;
     line-height: 0.8;
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
 }
-.seccion-2 p{
-    font-size: 2em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.seccion-2 .texto{
+    font-size: 1.4em;
+    text-align: center;
+    padding: 0px 70px;
+
 }
 #calculator{
-    margin: 50px;
+    padding: 100px 50px 0px 50px;
 }
 .containerCalculadora{
-    border:2px solid #373737;
+    background-color: #242424;
     border-radius: 20px;
     font-family: 'Roboto Mono', monospace;
 }
 #totalCalorias{
     height: 130px;
-    border: 2px solid #373737;
     border-radius: 20px;
+    background-color: #5f6368;
+    color: #fff;
     margin-top: 20px;
     text-align: right;
     padding: 0px 20px 15px 0px;
@@ -206,9 +250,6 @@ h1{
 .caloriasTitulo{
     padding: 15px 0px 0px 0px;
     font-size: 1em;
-}
-#calculator{
-    height: 510px;
 }
 #calculator form{
     display: flex;
@@ -220,117 +261,344 @@ h1{
 #calculator form div{
     width: 31%;
     margin: 3px;
-    border: 2px solid #373737;
+    background-color: #3c4043;
+    color: #fff;
 }
 #calculator form select{
-    border: 2px solid #373737;
+    background-color: #5f6368;
+    color: #fff;
+}
+#calculator form input{
+    background-color:  #5f6368;
+    color: #fff;
 }
 #actividad{
     width: 100%;
 }
 #submitDatosCalculadora{
     padding: 10px;
-    border: 2px solid #373737;
+    border: 2px solid #8ab4f8;
+    background-color: #8ab4f8;
     border-radius: 10px;
 }
 .faqsContainer{
-    padding: 50px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 30px 50px;
     font-size: 1.2em;
 }
 .faqsContainer h3{
     font-family: 'DM Serif Display', serif;
     font-size: 3em;
+    color: rgb(24, 225, 68);
+    margin-bottom: 25px;
 }
 .faqsContainer button{
     font-size: 0.6em;
+    background-color:#eeeeee;
+    border-bottom: 1px solid #000;
 }
 #programs{
-    margin: 100px 50px 0px 50px;
+    padding: 100px 30px 0px 30px;
 }
 #programs h3{
+    font-family: 'DM Serif Display', serif;
     font-size: 4em;
+    color:#373737;
+}
+#programs .cardsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 #programs .cardPlan{
-    margin: 20px;
+    display: flex;
+    padding: 20px 50px;
+    background-color: #eeeeee;
+    border: none;
+    width: 35%;
+    height: 650px;
+    align-items: center;
+}
+#programs button{
+    font-family: 'DM Serif Display', serif;
+    border: none;
+}
+#botonPlan{
+    background-color: #008037;
+}
+#botonPlan:hover{
+    background-color: #004e22;
+}
+#botonPlanEntrenamiento{
+    background-color: #8C52FF;
+}
+#botonPlanEntrenamiento:hover{
+    background-color: #6338b8;
+}
+.modal-content{
+    background-color: #eeeeee;
+}
+#modalPlanDos{
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5em;
+}
+#exampleModalLabel{
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5em;
 }
 .modalForm{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
+}
+.modalForm p{
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5em;
+}
+.modalForm label{
+    margin: 5px;
+}
+.modalForm button:hover{
+    background-color: rgb(53, 53, 53);
 }
 #detallesPlan{
     margin: 40px;
 }
-.agregado{
-    background-color: green;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-}
-.agregado h6{
-    margin: 0px;
-}
-.error{
-    background-color: red;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-}
-.error h6{
-    margin: 0px;
-}
 .roma{
-    margin: 0px;
+    padding: 30px;
+    color: rgb(53, 53, 53);
+    text-align: center;
+    font-family: 'DM Serif Display', serif;
 }
 .roma p{
-    width: 650px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3em;
+    font-family: 'Abhaya Libre', serif;
 }
-.roma aside div{
-    padding: 10px;
-    width: 226px;
-    height: 169px;
-    font-family: 'DM Serif Display', serif;
+.roma h4{
     font-size: 105px;
 }
+.roma h5{
+    font-size: 3em;
+}
 #shop{
-    margin: 100px 50px 0px 50px;
+    padding: 70px 30px 0px 30px;
 }
 #shop h3{
     font-size: 5em;
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+}
+.categoriasShop{
+    text-align: center;
 }
 .categoriasShop li{
     display: inline;
     padding: 0px 20px;
     cursor: pointer;
+    color: #777;
+}
+.active, li:hover{
+    color: rgb(42, 42, 42);
 }
 #FitRomaShop{
-    margin-top: 100px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+#FitRomaShop .item{
+    background-color: #eeeeee;
+    padding: 0;
+    border: 1px solid #cccccc;
+    margin-bottom: 15px;
+}
+.cardBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Roboto Mono', monospace;
+}
+.cardContent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.cardContent h5{
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+}
+.cardContent p{
+    width: 70%;
+    margin: 0;
+
+}
+.cardContent select{
+    padding: 5px;
+    width: 30%;
+    color: #303030;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.cardBody button{
+    font-family: 'DM Serif Display', serif;
+    border: none;
+}
+.cardBody button:hover{
+    background-color: rgb(53, 53, 53);
 }
 .contact{
-    margin: 100px 300px;
+    padding: 100px 300px;
+    font-family: 'Roboto Mono', monospace;
 }
 .contact h4{
     font-size: 4em;
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
 }
-.carritoCompras{
-    background-color: #373737;
+.contact button{
+    font-family: 'DM Serif Display', serif;
+    border: none;
+    margin-top: 10px;
 }
-.carritoCompras{
-    color: #fff;
-}
-.iconoRedes{
-    padding: 30px;
-    font-size: 2em;
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    color: #0d0d0d;
+.contact button:hover{
+    background-color: #e3329c;
 }
 footer{
-    background-color: #373737;
+    background-color: #303030;
     color: #f5f5f5;
     padding: 20px;
     text-align: center;
+    height: 90px;
+    line-height: 1;
+}
+/* media queries--------------------------------------------------- */
+@media (max-width: 1024px) {
+    .seccion-1 .frase-1 h2{
+        font-size: 6.5em;
+    }
+    h1{
+        font-size: 5em;
+    }
+    .seccion-1 .nav p{
+        font-size: 2em;
+        margin-top: 20px;
+    }
+    .seccion-2 .frase-2{
+        font-size: 4em;
+    }
+    .seccion-2 .texto{
+        font-size: 1.3em;
+    }
+    #calculator form{
+        padding: 10px;
+    }
+    .faqsContainer{
+        padding: 20px;
+        font-size: 1.2em;
+    }
+    .faqsContainer h3{
+        font-size: 2.3em;
+    }
+    .contact{
+        padding: 80px 200px;
+    }
+    #programs .cardPlan{
+        padding: 10px 10px;
+    }
+    .accordion-body{
+        font-size: 16px;
+    }
+}
+@media (max-width: 904px) {
+    .seccion-1 .frase-1 h2{
+        font-size: 6em;
+    }
+    h1{
+        font-size: 4em;
+    }
+    .seccion-1 .nav p{
+        font-size: 1.5em;
+    }
+    .seccion-1 aside ul li a{
+        font-size: 1.2em;
+    }
+    #nombre{
+        padding: 0px;
+        width: 320px;
+        font-size: 5em;
+    }
+    .faqsContainer h3{
+        margin-bottom: 10px;
+    }
+    #programs h3{
+        font-size: 3em;
+    }
+    .card-body{
+        height: min-content;
+    }
+    .roma h4{
+        font-size: 90px;
+    }
+    .contact{
+        padding: 50px 100px;
+    }
+}
+@media (max-width: 835px) {
+    .seccion-1 .frase-1 h2{
+        font-size: 5.5em;
+        padding: 0;
+    }
+    h1{
+        font-size: 3.5em;
+    }
+    .contact h4{
+        font-size: 3.5em;
+    }
+    .seccion-1 aside ul li a{
+        font-size: 1em;
+    }
+    #programs .cardPlan {
+        height: 500px;
+    }
+    #programs .cardsContainer {
+        justify-content: space-evenly;
+    }
+}
+@media (max-width: 768px) {
+    h1{
+        width: auto;
+    }
+    .seccion-1 .nav p {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    .seccion-1 {
+        margin: 10px 0px 0px 0px;
+    }
+    .seccion-2 .frase-2 {
+        font-size: 3.5em;
+        padding: 0;
+    }
+    .seccion-2 .texto {
+        padding: 0;
+        margin: 0;
+    }
+    .seccion-1 .nav {
+        flex-direction: row;
+        padding: 0px;
+    }
+    #shop h3 {
+        font-size: 4.3em;
+    }
+}
+@media (max-width: 630px) {
+    .seccion-1 .nav {
+        flex-direction: column;
+    }
+    #shop h3 {
+        font-size: 4em;
+    }
+    .contact h4 {
+        font-size: 3em;
+    }
 }

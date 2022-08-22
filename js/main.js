@@ -1,4 +1,4 @@
-// Saludo ---------------------------------------------------------
+// Saludo ----------------------------------------------------------------------------------------------
 let nombreForm = document.getElementById('nombreForm');
 let nombreInput = document.getElementById('nombreInput');
 let nombre = document.getElementById('nombre');
@@ -9,10 +9,25 @@ let modalSaludo = () =>{
 }
 nombreForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-    nombreInput != '' && (nombre.innerText = `${nombreInput.value},`);
+    let nombre2 = `${nombreInput.value}, `; 
+    let letras = nombre2.length + 4;
+    nombreInput != '' && (nombre.innerHTML = `
+    ${nombre2} <span class="maquinaLetras">&#160;</span>
+
+    <style>
+    .maquinaLetras{
+        position: absolute;
+        right: 0;
+        width: 0;
+        background-color: #eeeeee;
+        border-left: 2px solid black;
+        animation: maquina 4s infinite alternate steps(${letras});
+    }
+    </style>`
+    );
 })
 
-// Calculadora Nutricional -----------------------------------------------------
+// Calculadora Nutricional ------------------------------------------------------------------------------
 let datosCalculadora = document.getElementById('datosCalculadora');
 let peso = document.getElementById('peso');
 let altura = document.getElementById('altura');
@@ -91,28 +106,176 @@ datosCalculadora.addEventListener('submit', (event) => {
     datosCalculadora.reset();
 })
 
-//Planes de Alimentación y Entrenamiento --------------------------------------------------------------
-let carritoLocalStorage = localStorage.getItem('carrito');
-let carrito;
-let nuevoProducto;
-let detallesPlanAlimenticio = document.getElementById('detallesPlanAlimenticio');
-let detallesPlanEntrenamiento = document.getElementById('detallesPlanEntrenamiento');
-let objetivoPlan;
-let tipoPlan;
-let alergico = document.getElementById('alergico');
-let cantidadPlanAlimenticio = document.getElementById('cantidadPlanAlimenticio');
-let cantidadPlanEntrenamiento = document.getElementById('cantidadPlanEntrenamiento');
+//Funciones carrito ------------------------------------------------------------------------------------------
+let carritoPlanesLocalStorage = localStorage.getItem('carritoPlanes');
+let carritoProductosLocalStorage = localStorage.getItem('carritoProductos');
+let carritoPlanes;
+let carritoProductos;
+let divCarritoPlanes = document.getElementById('div-carritoPlanes');
+let divCarritoProductos = document.getElementById('div-carritoProductos');
 
-if (!carritoLocalStorage) { 
-    carrito = [];
-} else{
-    carrito = JSON.parse(carritoLocalStorage);
-    agregarCarrito();
+if (!carritoPlanesLocalStorage) {
+    carritoPlanes = [];
+} else {
+    carritoPlanes = JSON.parse(carritoPlanesLocalStorage);
+    pintarCarritoPlanes();
 }
+
+if (!carritoProductosLocalStorage) {
+    carritoProductos = [];
+} else {
+    carritoProductos = JSON.parse(carritoProductosLocalStorage);
+    pintarCarritoProductos();
+}
+
+function pintarCarritoPlanes() {
+    let plan = '';
+    for (let i = 0; i < carritoPlanes.length; i++) {
+        plan += `
+        <div class="carritoItem">
+        <h6>${carritoPlanes[i].nombrePlan}</h6>
+        <p>${carritoPlanes[i].objetivoPlan}</p>
+        <p>${carritoPlanes[i].tipoPlan}</p>
+        <p class="precioCarritoProducto">${carritoPlanes[i].precioPlan}</p>
+        <input class="cantidadCarritoProducto" onchange="cantidadChanged(event)" type="number" value="1">
+        <button onclick="eliminarCarritoPlanes(${i})" style="cursor:pointer" class="btn btn-danger" type="button">X</button>
+        </div>
+        `
+    }
+    divCarritoPlanes.innerHTML = plan;
+}
+
+function eliminarCarritoPlanes(item) {
+    carritoPlanes.splice(item, 1);
+    localStorage.setItem('carritoPlanes', JSON.stringify(carritoPlanes));
+    pintarCarritoPlanes();
+    calcularTotal()
+}
+
+function agregarCarritoProductos(objetoProducto) {
+    let inputCantidad = divCarritoProductos.getElementsByClassName('cantidadCarritoProducto');
+    for (let i = 0; i < carritoProductos.length; i++) {
+        if (carritoProductos[i].producto === objetoProducto.producto) {
+            //carritoProductos[i].cantidad++;
+            let valorInputCantidad = inputCantidad[i];
+            valorInputCantidad.value++;
+            agregado();
+            calcularTotal();
+            return
+        }
+    }
+    carritoProductos.push(objetoProducto);
+    localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos));
+    pintarCarritoProductos();
+    agregado();
+    //let carritoItem = document.querySelector('.carritoItem');
+    //carritoItem.querySelector('.cantidadCarritoProducto').addEventListener('change', cantidadChanged);
+    calcularTotal()
+}
+
+function cantidadChanged(event) {
+    const input = event.target;
+    if (input.value <= 0) {
+        input.value = 1;
+    }
+    calcularTotal();
+}
+
+function pintarCarritoProductos() {
+    let producto = "";
+    for (let i = 0; i < carritoProductos.length; i++) {
+        producto += `
+                <div class="carritoItem">
+                <h5>${carritoProductos[i].producto}</h5>
+                <p>${carritoProductos[i].categoria}</p>
+                <p class="precioCarritoProducto" >${carritoProductos[i].precio}</p>
+                <input class="cantidadCarritoProducto" onchange="cantidadChanged(event)" type="number" value="1">
+                <button onclick="eliminarCarritoProductos(${i})" style="cursor:pointer" class="btn btn-danger" type="button">X</button>
+                </div>
+                `;
+    }
+    divCarritoProductos.innerHTML = producto;
+}
+
+function eliminarCarritoProductos(item) {
+    carritoProductos.splice(item, 1);
+    //subtotales.splice(item, 1);
+    localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos));
+    pintarCarritoProductos();
+    calcularTotal()
+    //actualizarTotal()
+}
+// Totales -------------------------------------------------------------------------------------------------
+let total;
+let subtotalProducto;
+let subtotalPlan;
+let subtotales = [];
+let totalCarrito = document.querySelector('#totalCarrito');
+
+function calcularTotal() {
+    total = 0;
+    let carritoCantidad;
+    let cantidad = 0;
+    let carritoItem = document.querySelectorAll('.carritoItem');
+    carritoItem.forEach((item) => {
+        let precioCarritoProducto = item.querySelector('.precioCarritoProducto');
+        let valorPrecioCarritoProducto = Number(precioCarritoProducto.textContent);
+
+        let cantidadCarritoProducto = item.querySelector('.cantidadCarritoProducto');
+        let valorCantidadCarritoProducto = Number(cantidadCarritoProducto.value);
+        
+        cantidad = cantidad + valorCantidadCarritoProducto;
+        total = total + valorPrecioCarritoProducto * valorCantidadCarritoProducto;
+    });
+    totalCarrito.innerHTML = `${total}$USD`
+    carritoCantidad = `${cantidad}`
+}
+
+/* function actualizarTotal() {
+    let valorInicial = 0;
+    total = subtotales.reduce((valorAnterior, valorActual)=> valorAnterior + valorActual, valorInicial);
+    totalCarrito.innerText = `${total}`
+    console.log(total)
+} */
+
+// Código de descuento ------------------------------------------------------------------------------
+let ingresarCodigo = document.getElementById('ingresarCodigo');
+let inputCodigo = document.getElementById('inputCodigo');
+
+ingresarCodigo.addEventListener('click',()=>{
+    inputCodigo.innerHTML = `
+    <form id="validarCodigo">
+    <input id="codigo" placeholder="PROMO CODE">
+    <button class="btn btn-dark botonApply">Apply</button>
+    </form>
+    `
+    let validarCodigo = document.getElementById('validarCodigo');
+    let codigo = document.getElementById('codigo')
+    let valido = document.getElementById('valido');
+    validarCodigo.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    if (codigo.value == 'ROMIWEB' || codigo.value == 'romiweb' || codigo.value == 'ALETUTOR' || codigo.value == 'aletutor') {
+        codigo.style.border = "3px solid rgb(24, 225, 68)"
+        valido.innerHTML = `
+        <h6 style= "color: rgb(24, 225, 68); font-family: 'Roboto Mono', monospace;">Discount code applied!</h6>
+        `
+        let porcentaje = total * 0.7;
+        let descuento = total - porcentaje;
+        totalCarrito.innerHTML = `
+        <del>${total}</del>
+        <p style= "color: rgb(24, 225, 68)" >$${descuento}USD</p>
+        `;
+    } else{
+        codigo.style.border = "3px solid red"
+        valido.innerHTML = `
+        <h6 style= "color:red; font-family: 'Roboto Mono', monospace;">Discount code is not valid!</h6>
+        `
+    }
+})})
 
 function agregado() {
     Toastify({
-        text: "Product successfully added to your shopping cart!",
+        text: "Product successfully added to your shopping cart!💗",
         duration: 3000,
         gravity: 'top',
         position: 'center',
@@ -130,12 +293,45 @@ function error() {
     }).showToast();
 }
 
+let vaciarButton = document.querySelector('.vaciarButton');
+vaciarButton.addEventListener('click', ()=>{
+    divCarritoPlanes.innerHTML = '';
+    divCarritoProductos.innerHTML = '';
+    carritoPlanes = [];
+    carritoProductos = [];
+    localStorage.setItem('carritoPlanes', JSON.stringify(carritoPlanes));
+    localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos));
+    calcularTotal();
+    inputCodigo.innerHTML ='';
+    valido.innerHTML =''
+});
+
+let comprarButton = document.querySelector('.comprarButton');
+comprarButton.addEventListener('click', ()=>{
+    divCarritoPlanes.innerHTML = '';
+    divCarritoProductos.innerHTML = '';
+    carritoPlanes = [];
+    carritoProductos = [];
+    localStorage.setItem('carritoPlanes', JSON.stringify(carritoPlanes));
+    localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos));
+    calcularTotal();
+    inputCodigo.innerHTML =''
+    valido.innerHTML =''
+});
+
+//Planes de Alimentación y Entrenamiento ------------------------------------------------------------------------
+let nuevoPlan;
+let detallesPlanAlimenticio = document.getElementById('detallesPlanAlimenticio');
+let detallesPlanEntrenamiento = document.getElementById('detallesPlanEntrenamiento');
+let objetivoPlan;
+let tipoPlan;
+let alergico = document.getElementById('alergico');
+
 class Plan{
-    constructor(nombrePlan, objetivoPlan, tipoPlan, cantidadPlan, precioPlan){
+    constructor(nombrePlan, objetivoPlan, tipoPlan, precioPlan){
         this.nombrePlan = nombrePlan;
         this.objetivoPlan = objetivoPlan;
         this.tipoPlan = tipoPlan;
-        this.cantidadPlan = parseInt(cantidadPlan);
         this.precioPlan = precioPlan;
     }
 }
@@ -170,67 +366,15 @@ function seleccionarTipoPlanEntrenamiento() {
     }
 }
 
-// Totales --------------------------------
-let subtotal;
-let subtotales = [];
-let total;
-let totalCarrito = document.getElementById('totalCarrito');
-
-function calcularTotal(){
-    for(let i = 0; i < carrito.length; i++){ 
-        subtotal = carrito[i].cantidadPlan * carrito[i].precioPlan;
-    }
-    subtotales.push(subtotal);
-    console.log(subtotales);
-    console.log(`subtotal: ${subtotal}`);
-    actualizarTotal()
-}
-
-function actualizarTotal() {
-    let valorInicial = 0;
-    total = subtotales.reduce((valorAnterior, valorActual) => valorAnterior + valorActual, valorInicial);
-    totalCarrito.innerText = `${total}`;
-    console.log(total); 
-}
-
-function eliminarCarrito(item) {
-    carrito.splice(item, 1);
-    subtotales.splice(item,1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    console.log(subtotales);
-    agregarCarrito();
-    actualizarTotal();
-    console.log(carrito)
-}
-
-let carritoDiv = document.querySelector('#carrito');
-function agregarCarrito() {
-    let producto = '';
-    for (let i = 0; i < carrito.length; i++) {
-        producto = producto + `
-        <div>
-        <h6>${carrito[i].nombrePlan}</h6>
-        <p>${carrito[i].objetivoPlan}</p>
-        <p>${carrito[i].tipoPlan}</p>
-        <p>CANTIDAD: ${carrito[i].cantidadPlan}</p>
-        <p>PRECIO: $${carrito[i].precioPlan}</p>
-        <p onclick="eliminarCarrito(${i})" style="cursor: pointer">remove</p>
-        </div>
-        `
-        console.log(carrito)
-    }
-    document.getElementById('carrito').innerHTML = producto;
-}
-
 detallesPlanAlimenticio.addEventListener('submit', (event)=>{
     event.preventDefault();
     seleccionarObjetivoPlan();
     seleccionarTipoPlanAlimenticio();
-    nuevoProducto = new Plan('NUTRITION PROGRAM', objetivoPlan, tipoPlan, cantidadPlanAlimenticio.value, 2500)
-    if (objetivoPlan !="" && tipoPlan !="" && cantidadPlanAlimenticio.value != "") {
-        carrito.push(nuevoProducto);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        agregarCarrito();
+    nuevoPlan = new Plan('NUTRITION PROGRAM', objetivoPlan, tipoPlan, 25)
+    if (objetivoPlan !=undefined && tipoPlan !=undefined) {
+        carritoPlanes.push(nuevoPlan);
+        localStorage.setItem('carritoPlanes', JSON.stringify(carritoPlanes));
+        pintarCarritoPlanes();
         calcularTotal();
         filtrarProteinas();
         filtrarLacteos();
@@ -238,9 +382,10 @@ detallesPlanAlimenticio.addEventListener('submit', (event)=>{
         filtrarFrutas();
         filtrarGranos();
         agregado();
-        detallesPlanAlimenticio.reset()
+        detallesPlanAlimenticio.reset();
+        console.log(carritoPlanes)
     } else{
-        error()
+        error();
     }
 })
 
@@ -248,16 +393,17 @@ detallesPlanEntrenamiento.addEventListener('submit', (e)=>{
     e.preventDefault();
     seleccionarObjetivoPlan();
     seleccionarTipoPlanEntrenamiento();
-    nuevoProducto = new Plan('WORKOUT PROGRAM', objetivoPlan, tipoPlan, cantidadPlanEntrenamiento.value, 2300)
-    if (objetivoPlan !="" && tipoPlan !="" && cantidadPlanEntrenamiento.value != "") {
-        carrito.push(nuevoProducto);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        agregarCarrito();
+    nuevoPlan = new Plan('WORKOUT PROGRAM', objetivoPlan, tipoPlan, 23)
+    if (objetivoPlan !=undefined && tipoPlan !=undefined) {
+        carritoPlanes.push(nuevoPlan);
+        localStorage.setItem('carritoPlanes', JSON.stringify(carritoPlanes));
+        pintarCarritoPlanes();
         calcularTotal();
         agregado();
-        detallesPlanEntrenamiento.reset()
+        detallesPlanEntrenamiento.reset();
+        console.log(carritoPlanes)
     } else{
-        error()
+        error();
     }
 })
 
@@ -346,38 +492,3 @@ function filtrarGranos() {
     contenidoGranosAlergicos = granos.filter ((item) => item !== alergico.value);
     tipoPlan != 'Celíaco' && console.log(contenidoGranosAlergicos)
 }
-
-// Código de descuento ----------------------------------------
-let ingresarCodigo = document.getElementById('ingresarCodigo');
-let inputCodigo = document.getElementById('inputCodigo');
-
-ingresarCodigo.addEventListener('click',()=>{
-    inputCodigo.innerHTML = `
-    <form id="validarCodigo">
-    <input id="codigo" placeholder="PROMO CODE">
-    <button class="btn btn-dark">APPLY</button>
-    </form>
-    `
-    let validarCodigo = document.getElementById('validarCodigo');
-    let codigo = document.getElementById('codigo')
-    let valido = document.getElementById('valido');
-    validarCodigo.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    if (codigo.value == 'ROMIWEB' || codigo.value == 'romiweb' || codigo.value == 'ALETUTOR' || codigo.value == 'aletutor') {
-        codigo.style.border = "3px solid rgb(24, 225, 68)"
-        valido.innerHTML = `
-        <h6 style= "color: rgb(24, 225, 68)">Discount code applied!</h6>
-        `
-        let porcentaje = total * 0.7;
-        let descuento = total - porcentaje;
-        totalCarrito.innerHTML = `
-        <del>${total}</del>
-        <p style= "color: rgb(24, 225, 68)" >${descuento}</p>
-        `;
-    } else{
-        codigo.style.border = "3px solid red"
-        valido.innerHTML = `
-        <h6 style= "color:red">Discount code is not valid!</h6>
-        `
-    }
-})})

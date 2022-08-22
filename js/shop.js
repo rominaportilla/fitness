@@ -3,16 +3,27 @@ fetch('http://127.0.0.1:5500/productos.json')
     .then( (resp) => resp.json() )
     .then( (productosJson) => {
         // Pintar cards --------------------------------------
-        let aux = '';
         function obtenerProductos() {
+            let aux = '';
             for (let i = 0; i < productosJson.length; i++) {
                 aux += `
-                <div class="card col-lg-2 col-md-2 col-sm-2 col-xs-2 item" style="width: 18rem;">
+                <div class="card col-lg-2 col-md-2 col-sm-2 col-xs-2 item" style="width: 17rem">
                 <img src="${productosJson[i].img}" onmouseover="src='${productosJson[i].imgHover}'" onmouseout="src='${productosJson[i].img}'" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body cardBody">
+                <div class="cardContent">
                 <h5 class="card-title itemTitulo">${productosJson[i].producto}</h5>
-                <p class="card-text itemPrecio">${productosJson[i].precio}</p>
-                <button class="btn btn-dark agregarCarritoButton">Add to cart</button>
+                <p class="card-text itemPrecio">$${productosJson[i].precio}USD</p>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>XS</option>
+                <option value="1">S</option>
+                <option value="2">M</option>
+                <option value="3">L</option>
+                <option value="4">XL</option>
+                <option value="5">XXL</option>
+                </select>
+                </div>
+                <button onclick="agregarCarritoProductos({producto: '${productosJson[i].producto}', categoria:'${productosJson[i].categoria}', precio: ${productosJson[i].precio}, cantidad: 1})" class="btn btn-dark">Add to cart</button>
+                
                 </div>
                 </div>
                 `
@@ -32,12 +43,22 @@ fetch('http://127.0.0.1:5500/productos.json')
         function mostrarCategoria(categoriaArray) {
             for (let i = 0; i < categoriaArray.length; i++) {
                 aux1 += `
-                <div class="card col-lg-2 col-md-2 col-sm-2 col-xs-2 item" style="width: 18rem;">
+                <div class="card col-lg-2 col-md-2 col-sm-2 col-xs-2 item" style="width: 18rem">
                 <img src="${categoriaArray[i].img}" onmouseover="src='${categoriaArray[i].imgHover}'" onmouseout="src='${categoriaArray[i].img}'" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body cardBody">
+                <div class="cardContent">
                 <h5 class="card-title itemTitulo">${categoriaArray[i].producto}</h5>
                 <p class="card-text itemPrecio">${categoriaArray[i].precio}</p>
-                <button class="btn btn-primary agregarCarritoButton">Add to cart</button>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>XS</option>
+                <option value="1">S</option>
+                <option value="2">M</option>
+                <option value="3">L</option>
+                <option value="4">XL</option>
+                <option value="5">XXL</option>
+                </select>
+                </div>
+                <button onclick="agregarCarritoProductos({producto: '${categoriaArray[i].producto}', categoria:'${categoriaArray[i].categoria}', precio: ${categoriaArray[i].precio}, cantidad: 1})" class="btn btn-dark">Add to cart</button>
                 </div>
                 </div>
                 `
@@ -46,161 +67,55 @@ fetch('http://127.0.0.1:5500/productos.json')
         }
 
         all.addEventListener('click', (e)=>{
-            e.preventDefault();
-            obtenerProductos()
+            obtenerProductos();
+            all.className+= " active";
+            leggings.className.replace(" active", "");
+            sportsbras.className.replace(" active", "");
+            shorts.className.replace(" active", "");
+            tops.className.replace(" active", "");
         })
 
         leggings.addEventListener('click', (e)=>{
-            e.preventDefault();
-            let leggingsArray = productosJson.filter(item => item.categoria == 'BOTTOMS & LEGGINGS');
-            mostrarCategoria(leggingsArray)
+            let leggingsArray = productosJson.filter(item => item.categoria == 'LEGGINGS');
+            aux1 = '';
+            mostrarCategoria(leggingsArray);
+            leggings.className+= " active"
+            all.className.replace(" active", "");
+            sportsbras.className.replace(" active", "");
+            shorts.className.replace(" active", "");
+            tops.className.replace(" active", "");
         })
-        
+
         sportsbras.addEventListener('click', (e)=>{
-            e.preventDefault();
             let sportsbrasArray = productosJson.filter(item => item.categoria == 'SPORTS BRAS');
-            mostrarCategoria(sportsbrasArray)
+            aux1 = '';
+            mostrarCategoria(sportsbrasArray);
+            sportsbras.className+= " active";
+            leggings.className.replace(" active", "");
+            all.className.replace(" active", "");
+            shorts.className.replace(" active", "");
+            tops.className.replace(" active", "");
         })
-        
 
         shorts.addEventListener('click', (e)=>{
-            e.preventDefault();
             let shortsArray = productosJson.filter(item => item.categoria == 'SHORTS');
-            mostrarCategoria(shortsArray)
+            aux1 = '';
+            mostrarCategoria(shortsArray);
+            shorts.className+= " active";
+            leggings.className.replace(" active", "");
+            sportsbras.className.replace(" active", "");
+            all.className.replace(" active", "");
+            tops.className.replace(" active", "");
         })
 
         tops.addEventListener('click', (e)=>{
-            e.preventDefault();
             let topsArray = productosJson.filter(item => item.categoria == 'T-SHIRTS & TOPS');
-            mostrarCategoria(topsArray)
+            aux1 = '';
+            mostrarCategoria(topsArray);
+            tops.className+= " active";
+            leggings.className.replace(" active", "");
+            sportsbras.className.replace(" active", "");
+            shorts.className.replace(" active", "");
+            all.className.replace(" active", "");
         })
-
-        // Agregar al carrito --------------------------------------
-        let agregarCarritoButtons = document.querySelectorAll('.agregarCarritoButton');
-        console.log(agregarCarritoButtons)
-        agregarCarritoButtons.forEach(agregarCarritoButton => {agregarCarritoButton.addEventListener('click', agregarCarritoClicked)})
-
-        let vaciarButton = document.querySelector('.vaciarButton');
-        vaciarButton.addEventListener('click', vaciarButtonClicked);
-
-        let comprarButton = document.querySelector('.comprarButton');
-        comprarButton.addEventListener('click', comprarButtonClicked);
-
-        let itemsCarritoContainer = document.querySelector('.itemsCarritoContainer');
-        console.log(itemsCarritoContainer);
-
-        function agregarCarritoClicked(event) {
-            let button = event.target;
-
-            //button.forEach
-
-            let item = button.closest('.item');
-            let itemTitulo = document.querySelector('.itemTitulo').textContent;
-            let itemPrecio = document.querySelector('.itemPrecio').textContent;
-            console.log('button:')
-            console.log(button);
-            console.log('item:')
-            console.log(item);
-            console.log(itemTitulo);
-            console.log(itemPrecio);
-            agregarCarritoItem(itemTitulo, itemPrecio);
-            agregado();
-        }
-
-        function agregarCarritoItem(itemTitulo, itemPrecio) {
-            let carritoTitulos = itemsCarritoContainer.getElementsByClassName('.carritoTituloItem');
-
-            for (let i = 0; i < carritoTitulos.length; i++) {
-                if (carritoTitulos[i].innerText === itemTitulo) {
-                    let carritoCantidad = carritoTitulos[i].parentElement.parentElement.parentElement.querySelector('.carritoCantidadItem');
-                    carritoCantidad.value++;
-                    updateCarritoTotal();
-                    return
-                }
-            }
-
-            const carritoRow = document.createElement('div');
-            const carritoContent = `
-        <div class="row carritoItem">
-
-            <div class="col-6">
-                <div>
-                    <h6 class="carritoTituloItem">${itemTitulo}</h6>
-                </div>
-            </div>
-
-            <div class="col-2">
-                <div>
-                    <p class="carritoPrecioItem">${itemPrecio}</p>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div>
-                    <input class="carritoCantidadItem" type="number" value="1">
-                    <button class="btn btn-danger eliminarButton" type="button">X</button>
-                </div>
-            </div>
-
-            </div>
-        `;
-
-            carritoRow.innerHTML = carritoContent;
-            itemsCarritoContainer.append(carritoRow);
-
-            carritoRow.querySelector('.eliminarButton').addEventListener('click', carritoEliminarItem);
-
-            //carritoRow.querySelector('.carritoCantidadItem').addEventListener('change', cantidadChanged);
-
-            updateCarritoTotal();
-        }
-
-        function updateCarritoTotal() {
-            let totalShop = 0;
-
-            let carritoTotalShop = document.querySelector('.carritoTotalShop');
-
-            let carritoItems = document.querySelectorAll('.carritoItem');
-
-            let cantidad = 0;
-
-            carritoItems.forEach((carritoItem)=> {
-                let carritoPrecioItemElement = carritoItem.querySelector('.carritoPrecioItem');
-                let carritoPrecioItem = Number(carritoPrecioItemElement.textContent.replace('$USD', ''));
-                
-                let carritoCantidadItemElement = carritoItem.querySelector('.carritoCantidadItem');
-                let carritoCantidadItem = Number(carritoCantidadItemElement.value);
-
-                totalShop = totalShop + carritoPrecioItem * carritoCantidadItem;
-            })
-
-            carritoTotalShop.innerHTML = `${totalShop.toFixed(2)} $USD`
-        }
-
-        function carritoEliminarItem(e) {
-            let buttonClicked = e.target;
-            buttonClicked.closest('.carritoItem').remove();
-            updateCarritoTotal();
-        }
-
-        function vaciarButtonClicked() {
-            itemsCarritoContainer.innerHTML = '';
-            updateCarritoTotal();
-        }
-
-        function comprarButtonClicked() {
-            itemsCarritoContainer.innerHTML = '';
-            updateCarritoTotal();
-        }
-
     })
-
-/* 
-
-function agregarCarritoDos(onclick="agregarCarritoDos({producto: '${categoriaArray[i].producto}', nombre: '${categoriaArray[i].categoria}', precio: '${categoriaArray[i].precio}'})") {
-            carrito.push(objetoProducto);
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-            console.log(carrito)
-        }
-        
-        */

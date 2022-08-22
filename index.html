@@ -15,11 +15,12 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="icon" href="multimedia/fit.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <title>Fitness Coaching - FitRoma</title>
 </head>
 
-<body class="container-fluid" onload="modalSaludo()">
+<body class="container-fluid" onload="modalSaludo()" id="top">
 
     <!-- -----------------------------------------modal saludo------------------------------------------ -->
     <button id="modalSaludoBoton" type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -27,22 +28,23 @@
 
     <div id="modalContainer" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content modalContent">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Welcome! </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <h4>I'm Roma,</h4>
-                    <p>your Personal Fitness Coach❤️ <br> We will work together to build the body and mindset of your
+                    <p>your Personal Fitness Coach💗 <br> We will work together to build the body and mindset of your
                         dreams in a sustainable way. No more restrictions, no more fasting, no more food guilt!!!</p>
                     <form id="nombreForm">
                         <div class="mb-3">
                             <label for="nombreInput" class="col-form-label">What's your name?</label>
                             <input id="nombreInput" type="text" class="form-control">
                         </div>
-                        <div>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Hi
+                        <div class="modalButtonContainer">
+                            <button type="submit" class="btn btn-dark modalButton" data-bs-dismiss="modal"
+                                aria-label="Close">Hi
                                 Roma!</button>
                         </div>
                     </form>
@@ -54,7 +56,9 @@
     <header class="row">
         <!-- ----------------------------------------- logo ------------------------------------------ -->
         <div class="logo__container col-lg-10 col-md-10 col-sm-10 col-xs-10">
-            <p class="logo">Fit<span>Roma</span></p>
+            <a href="#top">
+                <p class="logo"><span>Fit</span>Roma</p>
+            </a>
         </div>
         <!-- ----------------------------------------- carrito ------------------------------------------ -->
         <button id="botonCarrito" class="btn col-lg-2 col-md-2 col-sm-2 col-xs-2" type="button"
@@ -63,47 +67,46 @@
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header carritoCompras">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">SHOPPING CART</h5>
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Shopping Cart</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <button class="vaciarButton">Vaciar carrito</button>
-            <div id="carrito" class="offcanvas-body">
-            </div>
-            <div class="offcanvas-body itemsCarritoContainer"></div>
+            <button class="vaciarButton btn">Vaciar carrito</button>
+            <div id="div-carritoPlanes" class="offcanvas-body"></div>
+            <div id="div-carritoProductos" class="offcanvas-body"></div>
             <div id="containerTotal">
                 <h4>Total</h4>
                 <div id="totalCarrito"></div>
-                <p class="carritoTotalShop">$0</p>
                 <h6 id="ingresarCodigo">Have a promo code?</h6>
                 <div id="inputCodigo"></div>
                 <div id="valido"></div>
             </div>
-            <button class="comprarButton">Comprar</button>
+            <button class="comprarButton btn btn-dark">Go to checkout</button>
         </div>
     </header>
 
     <!-- ----------------------------------------- sección principal (nav) ------------------------------------------ -->
     <section class="row seccion-1">
         <article class="frase-1 col-lg-7 col-md-7 col-sm-12 col-xs-12">
-            <h2 id="frase-h2">A strong mind leads to <br> a strong body</h2>
+            <h2 id="frase-h2">A strong mind leads to <br> a strong body.</h2>
         </article>
         <aside class="nav col-lg-5 col-md-5 col-sm-12 col-xs-12">
             <div id="nombre">girl,</div>
             <h1>you got this</h1>
             <p>¿How can I help you?</p>
             <ul>
-                <li><a href="#calculator" class="btn btn-primary">Calorie Calculator</a></li>
-                <li><a href="#programs" class="btn btn-primary">Nutrition & Workout Programs</a></li>
-                <li><a href="#shop" class="btn btn-primary">Shop</a></li>
+                <li><a href="#calculator" class="btn">Calorie Calculator</a></li>
+                <li><a href="#programs" class="btn">Nutrition & Workout Programs</a></li>
+                <li><a href="#shop" class="btn">Shop</a></li>
             </ul>
         </aside>
     </section>
 
     <!-- ----------------------------------------- contenido extra ------------------------------------------ -->
     <section class="row seccion-2">
-        <p class="frase-2 col-lg-12 col-md-12 col-sm-12 col-xs-12">LET'S GET STRONG TOGETHER</p>
-        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness Coaching</h2>
-        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Fitness is one of my biggest passions and something that I am
+        <p class="frase-2 col-lg-12 col-md-12 col-sm-12 col-xs-12 wow animate__animated animate__fadeInRight">LET'S GET STRONG TOGETHER</p>
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 wow animate__animated animate__fadeInLeft">Fitness Coaching</h2>
+        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 texto wow animate__animated animate__fadeInLeft">Fitness is one of my biggest passions and something
+            that I am
             the most proud of since I have dedicated so
             much time to learning and growing my knowledge in.</p>
     </section>
@@ -152,15 +155,15 @@
                 <!-- radios opciones bulk/cut/mantenimiento -->
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="calcular" id="deficit" required>
-                    <label class="form-check-label" for="deficit">Calorie Deficit/CUT</label>
+                    <label class="form-check-label" for="deficit">Calorie Deficit</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="calcular" id="superavit" required>
-                    <label class="form-check-label" for="superavit">Calorie Surplus/BULK</label>
+                    <label class="form-check-label" for="superavit">Calorie Surplus</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="calcular" id="mantenimiento" required>
-                    <label class="form-check-label" for="mantenimiento">Maintenance Calories/Body Recomposition</label>
+                    <label class="form-check-label" for="mantenimiento">Body Recomp</label>
                 </div>
 
                 <button id="submitDatosCalculadora" type="submit">=</button>
@@ -170,14 +173,13 @@
         <!-- ----------------------------------------- preguntas frecuentes ------------------------------------------ -->
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 faqsContainer">
             <h3>Calorie Calculator</h3>
-            <p>FAQs</p>
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            What is a calorie deficit?
+                            What is a calorie deficit/CUT ?
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
@@ -190,7 +192,7 @@
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            What is a calorie surplus?
+                            What is a calorie surplus/BULK ?
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
@@ -222,177 +224,167 @@
     <!-- ----------------------------------------- programas ------------------------------------------ -->
     <section id="programs" class="row">
         <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Nutrition & Workout Programs</h3>
+        <div class="cardsContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- card 1 -->
+            <div class="card cardPlan">
+                <img src="multimedia/nutitionPlan.png" class="card-img-top" alt="...">
+                <div class="card-body">
 
-        <!-- card 1 -->
-        <div class="card col-lg-3 col-md-3 col-sm-1 col-xs-1 cardPlan" style="width: 18rem;">
-            <img src="multimedia/previewPlan.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">NUTRITION PROGRAM</h5>
-                <p class="card-text">$2500</p>
+                    <!-- detalles plan -->
+                    <button id="botonPlan" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#modalPlan">
+                        View details
+                    </button>
 
-                <!-- detalles plan -->
-                <button id="botonPlan" type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#modalPlan">
-                    Ver detalles
-                </button>
+                    <!-- modal plan -->
+                    <div id="modalPlan" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Nutrition Program</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body modalForm">
+                                    <img src="multimedia/nutitionPlan.png" alt="plan" width="290px" height="410px">
+                                    <form id="detallesPlanAlimenticio">
+                                        <p>$25USD</p>
+                                        <label for="objetivoPlan">Objetivo</label>
+                                        <select id="objetivoPlan" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>Elegir</option>
+                                            <option value="1" name="perdidaPlanAlimenticio">Pérdida de grasa corporal
+                                            </option>
+                                            <option value="2" name="aumentoPlanAlimenticio">Aumento de masa muscular
+                                            </option>
+                                            <option value="3" name="recomposicionPlanAlimenticio">Recomposición corporal
+                                            </option>
+                                        </select>
 
-                <!-- modal plan -->
-                <div id="modalPlan" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">NUTRITION PROGRAM $2500</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                        <label for="tipoPlan">Tipo de Plan</label>
+                                        <select id="tipoPlan" class="form-select" aria-label="Default select example">
+                                            <option selected>Elegir</option>
+                                            <option value="1" name="todos">Todos los alimentos</option>
+                                            <option value="2" name="vegano">Vegano</option>
+                                            <option value="3" name="celiaco">Celíaco</option>
+                                        </select>
+
+                                        <div>
+                                            <label class="form-label" for="alergico">Alergico/a a:</label>
+                                            <input class="form-control" type="text" id="alergico"
+                                                placeholder="Opcional">
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-dark">Add to cart</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-body modalForm">
-                                <img src="multimedia/viewPlan.png" alt="plan" width="370px" height="480px">
-                                <form id="detallesPlanAlimenticio">
-                                    <label for="objetivoPlan">Objetivo</label>
-                                    <select id="objetivoPlan" class="form-select" aria-label="Default select example">
-                                        <option selected>Elegir</option>
-                                        <option value="1" name="perdidaPlanAlimenticio">Pérdida de grasa corporal
-                                        </option>
-                                        <option value="2" name="aumentoPlanAlimenticio">Aumento de masa muscular
-                                        </option>
-                                        <option value="3" name="recomposicionPlanAlimenticio">Recomposición corporal
-                                        </option>
-                                    </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                    <label for="tipoPlan">Tipo de Plan</label>
-                                    <select id="tipoPlan" class="form-select" aria-label="Default select example">
-                                        <option selected>Elegir</option>
-                                        <option value="1" name="todos">Todos los alimentos</option>
-                                        <option value="2" name="vegano">Vegano</option>
-                                        <option value="3" name="celiaco">Celíaco</option>
-                                    </select>
+            <!-- card 2 -->
+            <div class="card cardPlan">
+                <img src="multimedia/workoutProgram.png" class="card-img-top" alt="...">
+                <div class="card-body">
 
-                                    <div>
-                                        <label class="form-label" for="alergico">Alergico/a a:</label>
-                                        <input class="form-control" type="text" id="alergico" placeholder="Opcional">
-                                    </div>
+                    <!-- detalles plan -->
+                    <button id="botonPlanEntrenamiento" type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#modalPlanEntrenamiento">
+                        View details
+                    </button>
 
-                                    <div>
-                                        <label class="form-label" for="cantidadPlanAlimenticio">Cantidad</label>
-                                        <input class="form-control" type="number" id="cantidadPlanAlimenticio" min="1"
-                                            value="1">
-                                    </div>
+                    <!-- modal plan -->
+                    <div id="modalPlanEntrenamiento" class="modal fade" tabindex="-1" aria-labelledby="modalPlanDos"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalPlanDos">Workout Program</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body modalForm">
+                                    <img src="multimedia/workoutProgram.png" alt="plan" width="280px" height="410px">
+                                    <form id="detallesPlanEntrenamiento">
+                                        <p>$23USD</p>
+                                        <label for="objetivoPlanEntrenamiento">Objetivo</label>
+                                        <select id="objetivoPlanEntrenamiento" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>Elegir</option>
+                                            <option value="1" name="perdidaPlanEntrenamiento">Pérdida de grasa corporal
+                                            </option>
+                                            <option value="2" name="aumentoPlanEntrenamiento">Aumento de masa muscular
+                                            </option>
+                                            <option value="3" name="recomposicionPlanEntrenamiento">Recomposición
+                                                corporal
+                                            </option>
+                                        </select>
 
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-dark">Add to cart</button>
-                                    </div>
-                                </form>
+                                        <label for="tipoPlanEntrenamiento">Nivel</label>
+                                        <select id="tipoPlanEntrenamiento" class="form-select"
+                                            aria-label="Default select example">
+                                            <option selected>Elegir</option>
+                                            <option value="1" name="principiante">Principiante</option>
+                                            <option value="2" name="intermedio">Intermedio</option>
+                                            <option value="3" name="avanzado">Avanzado</option>
+                                        </select>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-dark">Add to cart</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- card 2 -->
-        <div class="card col-lg-3 col-md-3 col-sm-1 col-xs-1 cardPlan" style="width: 18rem;">
-            <img src="multimedia/planEntrenamiento.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">WORKOUT PROGRAM</h5>
-                <p class="card-text">$2300</p>
-
-                <!-- detalles plan -->
-                <button id="botonPlanEntrenamiento" type="button" class="btn btn-dark" data-bs-toggle="modal"
-                    data-bs-target="#modalPlanEntrenamiento">
-                    Ver detalles
-                </button>
-
-                <!-- modal plan -->
-                <div id="modalPlanEntrenamiento" class="modal fade" tabindex="-1" aria-labelledby="modalPlanDos"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalPlanDos">WORKOUT PROGRAM $2300</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body modalForm">
-                                <img src="multimedia/planEntrenamiento.png" alt="plan" width="370px" height="480px">
-                                <form id="detallesPlanEntrenamiento">
-                                    <label for="objetivoPlanEntrenamiento">Objetivo</label>
-                                    <select id="objetivoPlanEntrenamiento" class="form-select"
-                                        aria-label="Default select example">
-                                        <option selected>Elegir</option>
-                                        <option value="1" name="perdidaPlanEntrenamiento">Pérdida de grasa corporal
-                                        </option>
-                                        <option value="2" name="aumentoPlanEntrenamiento">Aumento de masa muscular
-                                        </option>
-                                        <option value="3" name="recomposicionPlanEntrenamiento">Recomposición corporal
-                                        </option>
-                                    </select>
-
-                                    <label for="tipoPlanEntrenamiento">Nivel</label>
-                                    <select id="tipoPlanEntrenamiento" class="form-select"
-                                        aria-label="Default select example">
-                                        <option selected>Elegir</option>
-                                        <option value="1" name="principiante">Principiante</option>
-                                        <option value="2" name="intermedio">Intermedio</option>
-                                        <option value="3" name="avanzado">Avanzado</option>
-                                    </select>
-
-                                    <div>
-                                        <label class="form-label" for="cantidadPlanEntrenamiento">Cantidad</label>
-                                        <input class="form-control" type="number" id="cantidadPlanEntrenamiento" min="1"
-                                            value="1">
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-dark">Add to cart</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </section>
 
     <!-- ----------------------------------------- sobre mí ------------------------------------------ -->
     <section class="roma row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
-        <aside class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <div> Hey,</div>
-            <h4>I am Roma</h4>
-            <p>I wanted to start online coaching to inspire and motivate other people who were or are in my exact shoes
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 romaContainer">
+            <h4 class="wow animate__animated animate__fadeInDown"> Hey,</h4>
+            <h5>I am Roma</h5>
+            <p class="wow animate__animated animate__fadeInLeft">I wanted to start online coaching to inspire and motivate other people who were or are in my exact shoes
                 5 years ago. I hope to change their mindset, lifestyle, or any goals they want to achieve in the gym.
             </p>
-            <p>I'll always be their biggest cheerleader and motivator even when they feel like giving up.</p>
-        </aside>
+            <p class="wow animate__animated animate__fadeInRight">I'll always be their biggest cheerleader and motivator even when they feel like giving up.</p>
+        </div>
     </section>
 
     <!-- ----------------------------------------- The FitRoma Shop ------------------------------------------ -->
     <section id="shop" class="row">
         <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">The FitRoma Shop</h3>
         <ul class="col-lg-12 col-md-12 col-sm-12 col-xs-12 categoriasShop">
-            <li id="all">All(30)</li>
-            <li id="leggings">Leggings(8)</li>
-            <li id="sportsbras">Sports Bras(4)</li>
-            <li id="shorts">Shorts(8)</li>
-            <li id="tops">T-Shirts & Tops(10)</li>
+            <li id="all" class="">All</li>
+            <li id="leggings" class="">Leggings</li>
+            <li id="sportsbras" class="">Sports Bras</li>
+            <li id="shorts" class="">Shorts</li>
+            <li id="tops" class="">T-Shirts & Tops</li>
         </ul>
         <div id="FitRomaShop" class="row"></div>
     </section>
 
     <!-- ----------------------------------------- contacto ------------------------------------------ -->
     <section class="contact row">
-        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Contact with me</h4>
+        <h4 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 wow animate__animated animate__pulse" data-wow-iteration="2">Contact with me</h4>
         <form id="contacto" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!-- nombre -->
             <div>
-                <input id="nombreContacto" type="text" class="form-control" placeholder="Name" aria-label="First name" required>
+                <input id="nombreContacto" type="text" class="form-control" placeholder="Name" aria-label="First name"
+                    required>
             </div>
             <!-- email -->
             <div>
-                <input id="email" type="email" class="form-control mt-1" placeholder="Email" aria-label="Email" required>
+                <input id="email" type="email" class="form-control mt-1" placeholder="Email" aria-label="Email"
+                    required>
             </div>
             <!-- mensaje -->
             <div class="form-floating">
@@ -400,25 +392,15 @@
                     id="floatingTextarea2" style="height: 100px" required></textarea>
                 <label for="floatingTextarea2">Comments</label>
             </div>
-            <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn btn-dark">SEND</button>
+            <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn btn-dark">send </button>
         </form>
     </section>
-
-    <!-- ----------------------------------------- redes ------------------------------------------ -->
-    <div class="redes row">
-        <a href="https://www.instagram.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i
-                class="fa-brands fa-instagram"></i></a>
-        <a href="https://youtube.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i
-                class="fa-brands fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/" target="_BLANK" class="iconoRedes col-lg-4 col-md-4 col-sm-4 col-xs-4"><i
-                class="fa-brands fa-tiktok"></i></a>
-    </div>
 
     <!-- ----------------------------------------- footer ------------------------------------------ -->
     <footer class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p>Política de Privacidad | Términos de Uso </p>
-            <p>Copyright &copy; FitRoma 2022</p>
+            <p>Privacy Policy | Terms of Use </p>
+            <p>Copyright &copy; 2022 FitRoma. All Rights Reserved.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -431,6 +413,9 @@
     <script src="js/main.js"></script>
     <script src="js/shop.js"></script>
     <script src="js/contacto.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </body>
-
 </html>
