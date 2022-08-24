@@ -8,9 +8,7 @@ body{
     background-color: #eeeeee;
     color: rgb(53, 53, 53);
 }
-ul{
-    list-style: none;
-}
+ul{ list-style: none;}
 header{
     display: flex;
     flex-direction: row;
@@ -84,9 +82,6 @@ header{
     background-color: #eeeeee;
     color: rgb(53, 53, 53)
 }
-/* .offcanvas-end {
-    width: 600px;
-} */
 .carritoCompras{
     border-bottom:1px solid #3a3a3a;
     font-size: 2em;
@@ -110,11 +105,11 @@ header{
     margin: 0;
 }
 #containerTotal{
-    padding: 20px;
+    padding: 10px;
     border-top: 1px solid #3a3a3a;
 }
 #containerTotal h4{
-    font-size: 2em;
+    font-size: 1.5em;
 }
 #ingresarCodigo{
     cursor: pointer;
@@ -374,6 +369,7 @@ h1{
     font-family: 'Abhaya Libre', serif;
 }
 .roma h4{
+    padding-top: 80px;
     font-size: 105px;
 }
 .roma h5{
@@ -429,7 +425,6 @@ h1{
 .cardContent p{
     width: 70%;
     margin: 0;
-
 }
 .cardContent select{
     padding: 5px;
@@ -504,6 +499,9 @@ footer{
     #programs .cardPlan{
         padding: 10px 10px;
     }
+    .roma h4{
+        padding-top: 0px;
+    }
     .accordion-body{
         font-size: 16px;
     }
@@ -541,6 +539,14 @@ footer{
     .contact{
         padding: 50px 100px;
     }
+    #modalPlanEntrenamiento img{
+        width: 200px;
+        height: 300px
+    }
+    #modalPlan img{
+        width: 200px;
+        height: 300px
+    }
 }
 @media (max-width: 835px) {
     .seccion-1 .frase-1 h2{
@@ -557,7 +563,7 @@ footer{
         font-size: 1em;
     }
     #programs .cardPlan {
-        height: 500px;
+        height: 400px;
     }
     #programs .cardsContainer {
         justify-content: space-evenly;
@@ -600,5 +606,126 @@ footer{
     }
     .contact h4 {
         font-size: 3em;
+    }
+}
+@media (max-width: 576px) {
+    .logo {
+        font-size: 2.3em;
+        padding: 20px 0px 20px 10px;
+    }
+    .logo__container {
+        width: 30%;
+    }
+    #botonCarrito {
+        width: auto;
+    }
+    #botonCarrito i {
+        font-size: 1.7em;
+    }
+    .modalForm form{
+        padding-left: 10px;
+    }
+    .modalForm form p{
+        font-size: 26px;
+    }
+    .modalForm select{
+        padding: 5px;
+    }
+    .modalForm form button{
+        font-size: 12px;
+        padding: 5px;
+    }
+}
+@media (max-width: 426px) {
+    .seccion-1 .frase-1 h2 {
+        font-size: 4.5em;
+    }
+    .seccion-1 article {
+        padding: 0;
+    }
+    #nombre {
+        padding: 0px;
+        width: 300px;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    .seccion-2 .frase-2 {
+        font-size: 3em;
+    }
+    .seccion-2 h2 {
+        font-size: 3em;
+    }
+    .seccion-2 .texto {
+        font-size: 1.1em;
+    }
+    #calculator {
+        padding: 100px 10px 0px 10px;
+    }
+    #calculator form {
+        padding: 10px 0;
+    }
+    #programs h3 {
+        font-size: 2.5em;
+    }
+    .roma p {
+        font-size: 1.1em;
+    }
+    .roma h4 {
+        font-size: 75px;
+    }
+    #shop h3 {
+        font-size: 3.5em;
+    }
+    .contact {
+        padding: 40px 10px;
+    }
+    #exampleModalLabel {
+        font-size: 1em;
+    }
+    .modalContent h4 {
+        font-size: 1.5em;
+    }
+    #modalContainer p{
+        font-size: 16px;
+    }
+    #nombreForm label{
+        font-size: 16px;
+    }
+    .modalButtonContainer button{
+        font-size: 14px;
+    }
+    #programs {
+        padding: 100px 0px 0px 0px;
+    }
+    #programs .cardPlan {
+        height: 310px;
+        padding: 0;
+    }
+    #programs .cardsContainer {
+        padding: 0;
+    }
+    #programs button {
+        font-size: 14px;
+    }
+}
+@media (max-width: 376px) {
+    .seccion-1 .frase-1 h2 {
+        font-size: 4em;
+    }
+    .seccion-2 .frase-2 {
+        font-size: 2.5em;
+    }
+    #datosCalculadora label{
+        font-size: 12px;
+    }
+    #datosCalculadora select{
+        font-size: 12px;
+    }
+    .contact h4 {
+        font-size: 2.2em;
+    }
+    footer p{
+        font-size: 14px;
     }
 }

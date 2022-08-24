@@ -68,15 +68,12 @@ function calcular() {
     if (document.getElementById('deficit').checked) {
         deficitCalorico = (calorias)=> calorias - 500; 
         totalCalorias = deficitCalorico(calorias);
-        console.log(`Déficit calórico = ${totalCalorias}`);
     } else if (document.getElementById('superavit').checked) {
         superavitCalorico = (calorias)=> calorias + 500;
         totalCalorias = superavitCalorico(calorias);
-        console.log(`Superávit calórico = ${totalCalorias}`);
     } else if (document.getElementById('mantenimiento').checked) {
         mantenimiento = calorias;
         totalCalorias = mantenimiento;
-        console.log(`Mantenimiento = ${totalCalorias}`);
     }
 }
 
@@ -98,9 +95,7 @@ datosCalculadora.addEventListener('submit', (event) => {
     } else if(genero == 'masculino'){
         TMB = calculoPeso + calculoAltura - calculoEdad + 5;
     }
-    console.log(`TMB = ${TMB}`)
-    actividadFisica()
-    console.log(`Calorías de mantenimiento = ${calorias}`);
+    actividadFisica();
     calcular();
     mostrarResultado();
     datosCalculadora.reset();
@@ -156,7 +151,6 @@ function agregarCarritoProductos(objetoProducto) {
     let inputCantidad = divCarritoProductos.getElementsByClassName('cantidadCarritoProducto');
     for (let i = 0; i < carritoProductos.length; i++) {
         if (carritoProductos[i].producto === objetoProducto.producto) {
-            //carritoProductos[i].cantidad++;
             let valorInputCantidad = inputCantidad[i];
             valorInputCantidad.value++;
             agregado();
@@ -168,8 +162,6 @@ function agregarCarritoProductos(objetoProducto) {
     localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos));
     pintarCarritoProductos();
     agregado();
-    //let carritoItem = document.querySelector('.carritoItem');
-    //carritoItem.querySelector('.cantidadCarritoProducto').addEventListener('change', cantidadChanged);
     calcularTotal()
 }
 
@@ -199,11 +191,9 @@ function pintarCarritoProductos() {
 
 function eliminarCarritoProductos(item) {
     carritoProductos.splice(item, 1);
-    //subtotales.splice(item, 1);
     localStorage.setItem('carritoProductos', JSON.stringify(carritoProductos));
     pintarCarritoProductos();
     calcularTotal()
-    //actualizarTotal()
 }
 // Totales -------------------------------------------------------------------------------------------------
 let total;
@@ -230,13 +220,6 @@ function calcularTotal() {
     totalCarrito.innerHTML = `${total}$USD`
     carritoCantidad = `${cantidad}`
 }
-
-/* function actualizarTotal() {
-    let valorInicial = 0;
-    total = subtotales.reduce((valorAnterior, valorActual)=> valorAnterior + valorActual, valorInicial);
-    totalCarrito.innerText = `${total}`
-    console.log(total)
-} */
 
 // Código de descuento ------------------------------------------------------------------------------
 let ingresarCodigo = document.getElementById('ingresarCodigo');
@@ -383,7 +366,6 @@ detallesPlanAlimenticio.addEventListener('submit', (event)=>{
         filtrarGranos();
         agregado();
         detallesPlanAlimenticio.reset();
-        console.log(carritoPlanes)
     } else{
         error();
     }
@@ -401,7 +383,6 @@ detallesPlanEntrenamiento.addEventListener('submit', (e)=>{
         calcularTotal();
         agregado();
         detallesPlanEntrenamiento.reset();
-        console.log(carritoPlanes)
     } else{
         error();
     }
