@@ -19,7 +19,7 @@ contacto.addEventListener('submit', (e) =>{
 })
     .then((response) => response.json())
     .then((data) => Toastify({
-        text: "Gracias por tu mensaje💚 En breve nos estaremos comunicando con vos!",
+        text: "Thanks for contacting us!💚",
         duration: 3000,
         gravity: 'top',
         position: 'center',
@@ -27,7 +27,7 @@ contacto.addEventListener('submit', (e) =>{
     }).showToast())
 
     .catch((e) => Toastify({
-        text: "Ocurrió un error al enviar el mensaje ☹️ Inténtalo otra vez, por favor",
+        text: "Error ☹️ Try again, please",
         duration: 3000,
         gravity: 'top',
         position: 'center',

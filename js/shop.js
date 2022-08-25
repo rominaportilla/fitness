@@ -48,7 +48,7 @@ fetch('http://127.0.0.1:5500/productos.json')
                 <div class="card-body cardBody">
                 <div class="cardContent">
                 <h5 class="card-title itemTitulo">${categoriaArray[i].producto}</h5>
-                <p class="card-text itemPrecio">${categoriaArray[i].precio}</p>
+                <p class="card-text itemPrecio">$${categoriaArray[i].precio}USD</p>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option selected>XS</option>
                 <option value="1">S</option>
